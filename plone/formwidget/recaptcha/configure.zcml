@@ -1,0 +1,57 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    i18n_domain="plone.formwidget.recaptcha">
+
+    <include package="plone.z3cform" />
+
+    <adapter
+        factory=".view.RecaptchaInfo"/>
+    <adapter
+        factory=".settings.RecaptchaSettings"/>
+
+    <browser:view
+        name="recaptcha"
+        for="*"
+        class=".view.RecaptchaView"
+        permission="zope2.Public"
+        />
+
+    <!-- make security assertions for use from restricted Python -->
+    <class
+        class="plone.formwidget.recaptcha.view.RecaptchaView">
+        <allow
+            attributes="image_tag audio_url verify external"/>
+    </class>
+
+    <browser:page
+        name="recaptcha-settings"
+        for="zope.app.component.interfaces.ISite"
+        class=".settings.RecaptchaSettingsForm"
+        permission="zope2.ManageProperties"
+        />
+
+
+    <!-- ReCaptcha widget -->
+    <class class=".widget.ReCaptchaWidget">
+        <require
+            permission="zope.Public"
+            interface="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
+        />
+    </class>
+
+    <z3c:widgetTemplate
+        mode="input"
+        widget="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="widget.pt"
+        />
+
+    <!--
+    example:
+    http://yourplonesite/@@recaptcha_form
+    -->
+    <!--<include package=".demo" />-->
+
+</configure>
