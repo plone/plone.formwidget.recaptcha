@@ -10,30 +10,30 @@ David Glick.
 Buildout Installation
 ---------------------
 
-Add the following code to your buildout.cfg to install plone.formwidget.recaptcha:
+Add the following code to your buildout.cfg to install plone.formwidget.recaptcha::
 
-[buildout]
-...
-eggs =
+    [buildout]
     ...
-    plone.formwidget.recaptcha
-    ...
+    eggs =
+        ...
+        plone.formwidget.recaptcha
+        ...
 
-...
-[instance]
-...
-zcml =
     ...
-    plone.formwidget.recaptcha
-...
+    [instance]
+    ...
+    zcml =
+        ...
+        plone.formwidget.recaptcha
+    ...
 
 
 ReCaptcha setup
 ---------------
 
 In order to use ReCaptcha on your Plone site, you need
-an account on `http://recaptcha.net`_. Go to
-`http://recaptcha.net/whyrecaptcha.html`_ to create an
+an account on `recaptcha.net`_. Go to
+`recaptcha.net/whyrecaptcha.html`_ to create an
 account and to receive your private and public key.
 
 If you don't want to rely on an external service for
@@ -44,5 +44,6 @@ After creating an account, go to the ReCaptcha control panel
 (your-site/@@recaptcha-settings) and fill your personal ReCaptcha
 keys.
 
-.. _`http://recaptcha.net`
-.. _`http://recaptcha.net/whyrecaptcha.html`
+.. _recaptcha.net: http://recaptcha.net
+.. _recaptcha.net/whyrecaptcha.html: http://recaptcha.net/whyrecaptcha.html
+
