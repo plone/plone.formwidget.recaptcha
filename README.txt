@@ -42,8 +42,8 @@ captcha, you might want to consider using
 plone.formwidget.captcha instead.
 
 After creating an account, go to the ReCaptcha control panel
-(your-site/@@recaptcha-settings) and fill your personal ReCaptcha
-keys.
+(your-site/@@recaptcha-settings) and fill in your personal
+ReCaptcha keys.
 
 .. _recaptcha.net: http://recaptcha.net
 .. _recaptcha.net/whyrecaptcha.html: http://recaptcha.net/whyrecaptcha.html
