@@ -6,7 +6,9 @@
     i18n_domain="plone.formwidget.recaptcha">
 
     <include package="plone.z3cform" />
+    <include package="plone.app.registry" />
 
+    <!-- -->
     <gs:registerProfile
         name="default"
         title="ReCaptcha widget"
@@ -16,9 +18,24 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <!-- Control panel -->
+    <browser:page
+        name="recaptcha-settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.ReCaptchaSettingsControlPanel"
+        permission="cmf.ManagePortal"
+        />
+
+    <!-- Resource directory for recaptcha ajax JS -->
     <browser:resourceDirectory
         name="plone.formwidget.recaptcha"
         directory="recaptcha-ajax"
+        />
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="plone.formwidget.recaptcha.images"
+        directory="images"
         />
 
     <adapter
@@ -39,14 +56,6 @@
         <allow
             attributes="image_tag audio_url verify external"/>
     </class>
-
-    <browser:page
-        name="recaptcha-settings"
-        for="zope.app.component.interfaces.ISite"
-        class=".settings.RecaptchaSettingsForm"
-        permission="zope2.ManageProperties"
-        />
-
 
     <!-- ReCaptcha widget -->
     <class class=".widget.ReCaptchaWidget">

@@ -1,11 +1,17 @@
-from zope.interface import Interface, implements
-from zope.component import adapts, queryMultiAdapter
-from zope.annotation import factory
-from zope import schema
-from zope.publisher.interfaces.browser import IBrowserRequest
 from Products.Five import BrowserView
+
+from zope import schema
+
+from zope.annotation import factory
+from zope.component import adapts, queryMultiAdapter, queryUtility
+from zope.interface import Interface, implements
+from zope.publisher.interfaces.browser import IBrowserRequest
+
 from recaptcha.client.captcha import displayhtml, submit
-from plone.formwidget.recaptcha.settings import getRecaptchaSettings
+
+from plone.registry.interfaces import IRegistry
+
+from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
 
 class IRecaptchaInfo(Interface):
     error = schema.TextLine()
@@ -24,7 +30,8 @@ class RecaptchaView(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.settings = getRecaptchaSettings()
+        registry = queryUtility(IRegistry)
+        self.settings = registry.forInterface(IReCaptchaSettings)
 
     def image_tag(self):
         portal_state = queryMultiAdapter((self.context, self.request), name=u'plone_portal_state')

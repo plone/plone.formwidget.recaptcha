@@ -27,6 +27,8 @@ setup(name='plone.formwidget.recaptcha',
           'setuptools',
           # -*- Extra requirements: -*-
           'plone.z3cform',
+          'plone.registry',
+          'plone.app.registry',
           'recaptcha-client != 1.0.4',
       ],
       entry_points="""
