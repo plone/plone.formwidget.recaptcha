@@ -18,7 +18,7 @@ class ReCaptchaSettingsEditForm(controlpanel.RegistryEditForm):
                         account and to receive your private and public key.
 
                         If you don't want to rely on an external service for
-                        captcha, you might consider to use
+                        captcha, you might want to consider using
                         plone.formwidget.captcha instead.
                         """)
 
