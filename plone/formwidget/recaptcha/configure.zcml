@@ -40,8 +40,6 @@
 
     <adapter
         factory=".view.RecaptchaInfo"/>
-    <adapter
-        factory=".settings.RecaptchaSettings"/>
 
     <browser:view
         name="recaptcha"
