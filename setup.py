@@ -32,6 +32,7 @@ setup(name='plone.formwidget.recaptcha',
           'recaptcha-client != 1.0.4',
       ],
       entry_points="""
-      # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
