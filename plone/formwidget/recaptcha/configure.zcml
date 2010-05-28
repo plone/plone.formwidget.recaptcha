@@ -1,8 +1,9 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:meta="http://namespaces.zope.org/meta"      
     xmlns:gs="http://namespaces.zope.org/genericsetup"
+    xmlns:z3c="http://namespaces.zope.org/z3c"    
     i18n_domain="plone.formwidget.recaptcha">
 
     <include package="plone.z3cform" />
@@ -70,6 +71,11 @@
         template="widget.pt"
         />
 
+    <!-- Declare that plone.formwidget.captcha provides a Captcha field that 
+         can be used by plone.app.discussion to add a Captcha field to comment 
+         forms. -->
+    <meta:provides feature="plone.app.discussion-captcha" />
+    
     <!--
     example:
     http://yourplonesite/@@recaptcha_form
