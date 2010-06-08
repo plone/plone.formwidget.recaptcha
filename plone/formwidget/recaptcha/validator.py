@@ -17,7 +17,7 @@ class ReCaptchaValidator(validator.SimpleFieldValidator):
 
     def validate(self, value):
         super(ReCaptchaValidator, self).validate(value)
-        captcha = getMultiAdapter((aq_inner(self.context), self.request), name='captcha')
+        captcha = getMultiAdapter((aq_inner(self.context), self.request), name='recaptcha')
 
         if not captcha.verify():
             raise WrongCaptchaCode

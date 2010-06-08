@@ -30,13 +30,11 @@ class BaseForm(form.Form):
     @button.buttonAndHandler(u'Save')
     def handleApply(self, action):
         data, errors = self.extractData()
-        if data.has_key('captcha'):
-            # Verify the user input against the captcha
-            captcha = getMultiAdapter((aq_inner(self.context), self.request), name='captcha')
-            if captcha.verify(data['captcha']):
-                print 'ReCaptcha validation passed.'
-            else:
-                print 'The code you entered was wrong, please enter the new one.'
+        captcha = getMultiAdapter((aq_inner(self.context), self.request), name='recaptcha')
+        if captcha.verify():
+            print 'ReCaptcha validation passed.'
+        else:
+            print 'The code you entered was wrong, please enter the new one.'
         return
 
 ReCaptchaForm = wrap_form(BaseForm)
