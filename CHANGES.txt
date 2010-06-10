@@ -7,6 +7,9 @@ Changelog
 * Move to plone.app.discussion-captcha feature declaration to meta.zcml.
   [timo]
 
+* Adapt recaptcha view instead of captcha view for validation.
+  [ramon]
+
 
 1.0b2 - 2010/06/02
 ------------------
