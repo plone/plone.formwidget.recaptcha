@@ -9,6 +9,8 @@
     <include package="plone.z3cform" />
     <include package="plone.app.registry" />
 
+    <include file="meta.zcml" />
+	
     <!-- -->
     <gs:registerProfile
         name="default"
@@ -71,11 +73,6 @@
         template="widget.pt"
         />
 
-    <!-- Declare that plone.formwidget.captcha provides a Captcha field that 
-         can be used by plone.app.discussion to add a Captcha field to comment 
-         forms. -->
-    <meta:provides feature="plone.app.discussion-captcha" />
-    
     <!--
     example:
     http://yourplonesite/@@recaptcha_form

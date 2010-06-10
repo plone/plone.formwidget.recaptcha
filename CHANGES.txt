@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0b3 - unreleased
+------------------
+
+* Move to plone.app.discussion-captcha feature declaration to meta.zcml.
+  [timo]
+
+
 1.0b2 - 2010/06/02
 ------------------
 
