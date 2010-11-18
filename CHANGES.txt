@@ -1,11 +1,12 @@
 Changelog
 =========
 
-1.0b3 - unreleased
+1.0b3 - 2010-11-18
 ------------------
 
 * Register browser components for a product browser layer so they don't
-  leak to sites without this product installed.
+  leak to sites without this product installed.  Run the upgrade step
+  if upgrading on a site that already has this product installed.
   [davisagli]
 
 * Move to plone.app.discussion-captcha feature declaration to meta.zcml.
