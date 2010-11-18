@@ -21,7 +21,7 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
     
-    <genericsetup:upgradeStep
+    <gs:upgradeStep
         source="1"
         destination="2"
         title="Install browser layer"
