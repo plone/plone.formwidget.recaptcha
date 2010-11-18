@@ -11,7 +11,7 @@
 
     <include file="meta.zcml" />
 	
-    <!-- -->
+    <!-- Profile and upgrades -->
     <gs:registerProfile
         name="default"
         title="ReCaptcha widget"
@@ -20,12 +20,22 @@
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
+    
+    <genericsetup:upgradeStep
+        source="1"
+        destination="2"
+        title="Install browser layer"
+        description=""
+        profile="plone.formwidget.recaptcha:default"
+        handler=".upgrades.install_browserlayer"
+        />
 
     <!-- Control panel -->
     <browser:page
         name="recaptcha-settings"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".controlpanel.ReCaptchaSettingsControlPanel"
+        layer=".interfaces.IReCaptchaLayer"
         permission="cmf.ManagePortal"
         />
 
@@ -33,12 +43,14 @@
     <browser:resourceDirectory
         name="plone.formwidget.recaptcha"
         directory="recaptcha-ajax"
+        layer=".interfaces.IReCaptchaLayer"
         />
 
     <!-- Resource directory for images -->
     <browser:resourceDirectory
         name="plone.formwidget.recaptcha.images"
         directory="images"
+        layer=".interfaces.IReCaptchaLayer"
         />
 
     <adapter
@@ -48,6 +60,7 @@
         name="recaptcha"
         for="*"
         class=".view.RecaptchaView"
+        layer=".interfaces.IReCaptchaLayer"
         permission="zope2.Public"
         />
 

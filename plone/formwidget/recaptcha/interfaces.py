@@ -7,9 +7,15 @@ from zope.i18nmessageid import MessageFactory
 
 _ = MessageFactory('plone.formwidget.recaptcha')
 
+
+class IReCaptchaLayer(Interface):
+    """Browser layer for plone.formwdiget.recaptcha"""
+
+
 class IReCaptchaWidget(interfaces.IWidget):
     """Marker interface for the ReCaptcha widget
     """
+
 
 class IReCaptchaSettings(Interface):
     """Global discussion settings. This describes records stored in the

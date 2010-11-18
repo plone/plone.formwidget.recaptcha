@@ -1,0 +1,4 @@
+<layers>
+    <layer name="plone.formwidget.recaptcha" 
+           interface="plone.formwidget.recaptcha.interfaces.IReCaptchaLayer" />
+</layers>
