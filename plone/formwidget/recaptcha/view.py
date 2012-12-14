@@ -53,6 +53,24 @@ class RecaptchaView(BrowserView):
         error = IRecaptchaInfo(self.request).error
         return options + displayhtml(self.settings.public_key, use_ssl=use_ssl, error=error)
 
+    def ajax_widget(self):
+        portal_state = queryMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        if portal_state is not None:
+            lang = portal_state.language()[:2]
+        else:
+            lang = 'en'
+
+        if not self.settings.public_key:
+            raise ValueError, 'No recaptcha public key configured. Go to path/to/site/@@recaptcha-settings to configure.'
+        
+        rc_html = """
+        <div id="recaptcha_div" data-key="%(PublicKey)s" 
+             data-theme="blackglass" data-lang="%(Lang)s"></div>""" % {
+                'PublicKey' : self.settings.public_key,
+                'Lang': lang
+              }
+        return rc_html
+
     def audio_url(self):
         return None
 

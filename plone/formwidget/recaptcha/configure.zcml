@@ -68,7 +68,7 @@
     <class
         class="plone.formwidget.recaptcha.view.RecaptchaView">
         <allow
-            attributes="image_tag audio_url verify external"/>
+            attributes="image_tag ajax_widget audio_url verify external"/>
     </class>
 
     <!-- ReCaptcha widget -->
@@ -86,6 +86,12 @@
         template="widget.pt"
         />
 
+    <z3c:widgetTemplate
+        mode="ajax_input"
+        widget="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
+        layer="z3c.form.interfaces.IFormLayer"
+        template="ajax_widget.pt"
+        />
     <!--
     example:
     http://yourplonesite/@@recaptcha_form
