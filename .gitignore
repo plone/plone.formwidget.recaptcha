@@ -1,0 +1,6 @@
+*~
+# Standard python & egg files we ignore
+*.py[co]
+*.egg
+*.egg-info
+dist
