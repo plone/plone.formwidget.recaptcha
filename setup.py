@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '1.0b4'
+version = '2.0a1'
 
 setup(name='plone.formwidget.recaptcha',
       version=version,
@@ -27,7 +27,8 @@ setup(name='plone.formwidget.recaptcha',
           'plone.z3cform',
           'plone.registry',
           'plone.app.registry',
-          'recaptcha-client != 1.0.4',
+          # 'recaptcha-client != 1.0.4',
+          'norecaptcha',
       ],
       entry_points="""
       [z3c.autoinclude.plugin]
