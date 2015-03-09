@@ -32,19 +32,15 @@ Add the following code to your buildout.cfg to install plone.formwidget.recaptch
 ReCaptcha setup
 ---------------
 
-In order to use ReCaptcha on your Plone site, you need
-an account on `recaptcha.net`_. Go to
-`recaptcha.net/whyrecaptcha.html`_ to create an
-account and to receive your private and public key.
+Before the service will work, you must obtain a public and private key from
+https://developers.google.com/recaptcha/, and configure them at http://path/to/site/@@recaptcha-settings
 
-If you don't want to rely on an external service for
-captcha, you might want to consider using
-plone.formwidget.captcha instead.
 
-After creating an account, go to the ReCaptcha control panel
-(your-site/@@recaptcha-settings) and fill in your personal
-ReCaptcha keys.
+Upgrade to API v2
+-----------------
 
-.. _recaptcha.net: http://recaptcha.net
-.. _recaptcha.net/whyrecaptcha.html: http://recaptcha.net/whyrecaptcha.html
+Upgrading to plone.formwidget.recaptcha 2.* (reCaptcha API V2) you need double check your keys
+because global Keys are not supported in the V2 API, so you need to create a new key
+if you wish to use the V2 API.
+
 
