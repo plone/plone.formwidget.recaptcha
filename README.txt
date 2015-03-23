@@ -39,8 +39,5 @@ https://developers.google.com/recaptcha/, and configure them at http://path/to/s
 Upgrade to API v2
 -----------------
 
-Upgrading to plone.formwidget.recaptcha 2.* (reCaptcha API V2) you need double check your keys
-because global Keys are not supported in the V2 API, so you need to create a new key
-if you wish to use the V2 API.
-
-
+plone.formwidget.recaptcha 2.* uses V2 of the reCaptcha API. Users upgrading from plone.formwidget.recaptcha 
+1.* will therefore need to generate new keys as global Keys are not supported in the V2 API.
