@@ -1,17 +1,19 @@
 <configure
+    i18n_domain="plone.formwidget.captcha"
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="plone.formwidget.captcha">
+    xmlns:browser="http://namespaces.zope.org/browser">
 
-    <browser:page
-        name="recaptcha_form"
-        for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
-        class=".form.ReCaptchaForm"
-        permission = "zope.Public" />
+  <browser:page
+      class=".form.ReCaptchaForm"
+      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      name="recaptcha_form"
+      permission="zope.Public"
+  />
 
-    <adapter
-        for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
-        provides=".form.IReCaptchaForm"
-        factory=".form.ReCaptcha" />
+  <adapter
+      factory=".form.ReCaptcha"
+      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      provides=".form.IReCaptchaForm"
+  />
 
 </configure>

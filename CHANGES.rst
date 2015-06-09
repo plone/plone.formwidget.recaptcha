@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.0a1 - unreleased
-------------------
+2.0.dev0 (unreleased)
+---------------------
+
+* some pep8/plone conventions code style cleanup.
+  [jensens]
 
 * recaptcha API 2 (aka norecaptcha)
   [mamico]
@@ -28,10 +31,10 @@ Changelog
 * Updated package metadata and marked this as a Plone add-on.
   [timo]
 
-* Declare that plone.formwidget.captcha provides a Captcha field that can be 
+* Declare that plone.formwidget.captcha provides a Captcha field that can be
   used by plone.app.discussion to add a Captcha field to comment forms.
-  [timo] 
-  
+  [timo]
+
 
 1.0b1 - 2009-12-07
 ------------------

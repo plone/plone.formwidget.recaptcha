@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <registry>
- <records interface="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings" />
+  <records interface="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings" />
 </registry>
