@@ -1,8 +1,11 @@
 Changelog
 =========
 
-1.0b4 - unreleased
+2.0a1 - unreleased
 ------------------
+
+* recaptcha API 2 (aka norecaptcha)
+  [mamico]
 
 1.0b3 - 2010-11-18
 ------------------
