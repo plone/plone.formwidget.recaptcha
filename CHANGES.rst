@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.0.dev0 (unreleased)
----------------------
+2.0a1 (2015-06-17)
+------------------
 
 * some pep8/plone conventions code style cleanup.
   [jensens]
