@@ -22,8 +22,9 @@ setup(
     author_email='plone-developers@lists.sourceforge.net',
     url='http://pypi.python.org/pypi/plone.formwidget.recaptcha',
     license='GPL',
-    packages=find_packages(exclude=['ez_setup']),
-    namespace_packages=['plone'],
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+    namespace_packages=['plone', 'plone.formwidget'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[

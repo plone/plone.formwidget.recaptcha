@@ -4,7 +4,9 @@ Changelog
 2.0a2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix: problem with MANIFEST.in and old package structure made 2.0a1 a 
+  brown bag release. All non-python files (i.e. zcml) were missing.
+  [jensens]
 
 
 2.0a1 (2015-06-17)
