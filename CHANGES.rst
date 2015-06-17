@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0a2 (unreleased)
+2.0a2 (2015-06-17)
 ------------------
 
 - Fix: problem with MANIFEST.in and old package structure made 2.0a1 a 
