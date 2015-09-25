@@ -27,6 +27,14 @@
       source="1"
       title="Install browser layer"
   />
+  <gs:upgradeStep
+      description=""
+      destination="3"
+      handler=".upgrades.reapply_registry"
+      profile="plone.formwidget.recaptcha:default"
+      source="2"
+      title="Re-Apply registry: load new controlpanel values"
+  />
 
   <!-- Control panel -->
   <browser:page

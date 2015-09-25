@@ -4,13 +4,15 @@ Changelog
 2.0a3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support for widget display settings as described in
+  https://developers.google.com/recaptcha/docs/display
+  [jensens]
 
 
 2.0a2 (2015-06-17)
 ------------------
 
-- Fix: problem with MANIFEST.in and old package structure made 2.0a1 a 
+- Fix: problem with MANIFEST.in and old package structure made 2.0a1 a
   brown bag release. All non-python files (i.e. zcml) were missing.
   [jensens]
 

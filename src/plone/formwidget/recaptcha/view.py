@@ -43,7 +43,13 @@ class RecaptchaView(BrowserView):
                 'path/to/site/@@recaptcha-settings to configure.'
             )
         lang = self.request.get('LANGUAGE', 'en')
-        return displayhtml(self.settings.public_key, lang)
+        return displayhtml(
+            self.settings.public_key,
+            language=lang,
+            theme=self.settings.display_theme,
+            d_type=self.settings.display_type,
+            size=self.settings.display_size,
+        )
 
     def audio_url(self):
         return None
