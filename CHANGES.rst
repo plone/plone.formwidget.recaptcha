@@ -4,6 +4,9 @@ Changelog
 2.0a3 (unreleased)
 ------------------
 
+- Support for use the widget with plone.supermodel
+  [jpgimenez]
+
 - Support for widget display settings as described in
   https://developers.google.com/recaptcha/docs/display
   [jensens]
