@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0a3 (unreleased)
+2.0a3 (2016-12-21)
 ------------------
 
 - Support for use the widget with plone.supermodel
