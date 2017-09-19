@@ -84,6 +84,13 @@
 
   <z3c:widgetTemplate
       layer="z3c.form.interfaces.IFormLayer"
+      mode="display"
+      template="widget_display.pt"
+      widget="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
+  />
+
+  <z3c:widgetTemplate
+      layer="z3c.form.interfaces.IFormLayer"
       mode="input"
       template="widget.pt"
       widget="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
