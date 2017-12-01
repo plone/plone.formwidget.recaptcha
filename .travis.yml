@@ -12,7 +12,7 @@ before_install:
   - mkdir -p buildout-cache/eggs
 install:
   - sed -ie "s#test-4.3.cfg#test-$PLONE_VERSION.cfg#" buildout.cfg
-  - pip install zc.buildout
+  - pip install -r requirements.txt
   - buildout -c travis.cfg annotate
   - buildout -t 10 -Nc travis.cfg
 before_script:
