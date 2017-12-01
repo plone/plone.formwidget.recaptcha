@@ -13,8 +13,8 @@ before_install:
 install:
   - sed -ie "s#test-4.3.cfg#test-$PLONE_VERSION.cfg#" buildout.cfg
   - pip install zc.buildout
-  - bin/buildout -c travis.cfg annotate
-  - bin/buildout -t 10 -Nc travis.cfg
+  - buildout -c travis.cfg annotate
+  - buildout -t 10 -Nc travis.cfg
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
