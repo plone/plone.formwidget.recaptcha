@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0 (2017-09-04)
+2.0 (unreleased)
 ----------------
 
 - Add a dummy widget display view which renders empty.
