@@ -30,6 +30,9 @@ ReCaptcha setup
 Before the service will work, you must obtain a public and private key from
 `developers.google.com/recaptcha <https://developers.google.com/recaptcha/>`_, and configure them at ``http://path/to/site/@@recaptcha-settings``
 
+Usage
+-----
+See the `demo <https://github.com/plone/plone.formwidget.recaptcha/tree/master/src/plone/formwidget/recaptcha/demo>`_ folder inside the distribution for an example usage.
 
 Upgrade to API v2
 -----------------
