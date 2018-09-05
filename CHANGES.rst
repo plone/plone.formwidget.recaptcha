@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.0 (unreleased)
-----------------
+2.0.0 (2018-09-05)
+------------------
 
 - Add a dummy widget display view which renders empty.
   A widget needs a display view, otherwise form result rendering may fail.
