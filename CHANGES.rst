@@ -4,6 +4,9 @@ Changelog
 2.1 (unreleased)
 ----------------
 
+- Remove obsolte action icons configuration.
+  [thet]
+
 - Remove obsolete ``recaptcha_ajax.js`` - all scripts are integrated via the ``norecaptcha`` package.
   Add upgrade step for that.
   [thet]
