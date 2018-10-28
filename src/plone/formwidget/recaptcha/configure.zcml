@@ -35,6 +35,14 @@
       source="2"
       title="Re-Apply registry: load new controlpanel values"
   />
+  <gs:upgradeStep
+      description=""
+      destination="4"
+      handler=".upgrades.to_4"
+      profile="plone.formwidget.recaptcha:default"
+      source="3"
+      title="Remove obsolete JavaScript"
+  />
 
   <!-- Control panel -->
   <browser:page
@@ -45,19 +53,6 @@
       permission="cmf.ManagePortal"
   />
 
-  <!-- Resource directory for recaptcha ajax JS -->
-  <browser:resourceDirectory
-      directory="recaptcha-ajax"
-      layer=".interfaces.IReCaptchaLayer"
-      name="plone.formwidget.recaptcha"
-  />
-
-  <!-- Resource directory for images -->
-  <browser:resourceDirectory
-      directory="images"
-      layer=".interfaces.IReCaptchaLayer"
-      name="plone.formwidget.recaptcha.images"
-  />
 
   <adapter factory=".view.RecaptchaInfo" />
 
