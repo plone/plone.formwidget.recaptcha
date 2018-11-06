@@ -4,7 +4,8 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- update controlpanel text
+  [lucid-0]
 
 
 2.0.0 (2018-09-05)
