@@ -45,13 +45,6 @@
       permission="cmf.ManagePortal"
   />
 
-  <!-- Resource directory for recaptcha ajax JS -->
-  <browser:resourceDirectory
-      directory="recaptcha-ajax"
-      layer=".interfaces.IReCaptchaLayer"
-      name="plone.formwidget.recaptcha"
-  />
-
   <!-- Resource directory for images -->
   <browser:resourceDirectory
       directory="images"
@@ -81,6 +74,15 @@
         permission="zope.Public"
     />
   </class>
+
+  <browser:viewlet
+    name="plone.formwidget.recaptcha.js"
+    manager="plone.app.layout.viewlets.interfaces.IScripts"
+    template="recaptcha-js.pt"
+    class=".view.HeadViewlet"
+    layer=".interfaces.IReCaptchaLayer"
+    permission="zope2.View"
+  />
 
   <z3c:widgetTemplate
       layer="z3c.form.interfaces.IFormLayer"

@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 from Products.Five import BrowserView
 from norecaptcha.captcha import displayhtml, submit
+from plone.app.layout.viewlets import ViewletBase
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
 from plone.registry.interfaces import IRegistry
 from zope import schema
 from zope.annotation import factory
+from zope.annotation.interfaces import IAnnotations
 from zope.component import adapter
 from zope.component import queryUtility
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
+
+HAS_RECAPTCHA_FIELD_KEY = 'has_recaptcha'
 
 
 class IRecaptchaInfo(Interface):
@@ -24,6 +28,7 @@ class RecaptchaInfoAnnotation(object):
     def __init__(self):
         self.error = None
         self.verified = False
+
 
 RecaptchaInfo = factory(RecaptchaInfoAnnotation)
 
@@ -43,6 +48,7 @@ class RecaptchaView(BrowserView):
                 'path/to/site/@@recaptcha-settings to configure.'
             )
         lang = self.request.get('LANGUAGE', 'en')
+        IAnnotations(self.request)[HAS_RECAPTCHA_FIELD_KEY] = True
         return displayhtml(
             self.settings.public_key,
             language=lang,
@@ -81,3 +87,8 @@ class RecaptchaView(BrowserView):
     @property
     def external(self):
         return True
+
+
+class HeadViewlet(ViewletBase):
+    def available(self):
+        return IAnnotations(self.request).get(HAS_RECAPTCHA_FIELD_KEY, False)
