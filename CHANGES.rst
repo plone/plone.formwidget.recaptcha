@@ -4,7 +4,8 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add external js from Google, remove local copy.
+  [mamico]
 
 
 2.0.0 (2018-09-05)
