@@ -1,11 +1,18 @@
 Changelog
 =========
 
-2.0.1 (unreleased)
-------------------
+2.1 (unreleased)
+----------------
+
+- Remove obsolte action icons configuration.
+  [thet]
 
 - update controlpanel text
   [lucid-0]
+
+- Remove obsolete ``recaptcha_ajax.js`` - all scripts are integrated via the ``norecaptcha`` package.
+  Add upgrade step for that.
+  [thet]
 
 
 2.0.0 (2018-09-05)

@@ -55,4 +55,5 @@ class BaseForm(form.Form):
             )
         return
 
+
 ReCaptchaForm = wrap_form(BaseForm)

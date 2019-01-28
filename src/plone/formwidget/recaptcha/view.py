@@ -25,6 +25,7 @@ class RecaptchaInfoAnnotation(object):
         self.error = None
         self.verified = False
 
+
 RecaptchaInfo = factory(RecaptchaInfoAnnotation)
 
 
