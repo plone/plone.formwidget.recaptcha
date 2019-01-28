@@ -7,6 +7,9 @@ Changelog
 - Remove obsolte action icons configuration.
   [thet]
 
+- update controlpanel text
+  [lucid-0]
+
 - Remove obsolete ``recaptcha_ajax.js`` - all scripts are integrated via the ``norecaptcha`` package.
   Add upgrade step for that.
   [thet]
