@@ -4,9 +4,11 @@ sudo: false
 env:
   - PLONE_VERSION=4.3
   - PLONE_VERSION=5.0
+  - PLONE_VERSION=5.1
 matrix:
   allow_failures:
     - env: PLONE_VERSION=5.0
+    - env: PLONE_VERSION=5.1
 before_install:
   - mkdir -p buildout-cache/downloads
   - mkdir -p buildout-cache/eggs
