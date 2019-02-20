@@ -4,7 +4,11 @@ Changelog
 2.1 (unreleased)
 ----------------
 
-- Remove obsolte action icons configuration.
+- Update TravisCI Setup and test with Plone 5.1 and 5.2 on Python 2.7.
+  Also test on Python 3.6+3.7 (allowed to fail, and fails for now).
+  [jensens]
+
+- Remove obsolete action icons configuration.
   [thet]
 
 - update controlpanel text
