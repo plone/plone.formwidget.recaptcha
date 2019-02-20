@@ -5,11 +5,12 @@ env:
   - PLONE_VERSION=4.3.x
   - PLONE_VERSION=5.0.x
   - PLONE_VERSION=5.1.x
+  - PLONE_VERSION=5.2.x
 before_install:
   - mkdir -p buildout-cache/downloads
   - mkdir -p buildout-cache/eggs
 install:
-  - pip install -r requirements.txt
+  - pip install -r requirements-$PLONE_VERSION.txt
   - buildout -c plone-$PLONE_VERSION.cfg
 before_script:
   - "export DISPLAY=:99.0"
