@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.1 (unreleased)
-----------------
+2.1.0 (2019-02-20)
+------------------
 
 - Update TravisCI Setup and test with Plone 5.1 and 5.2 on Python 2.7.
   Also test on Python 3.6+3.7 (allowed to fail, and fails for now).
