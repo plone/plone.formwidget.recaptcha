@@ -8,6 +8,7 @@
 
   <include package="plone.z3cform" />
   <include package="plone.app.registry" />
+  <include package=".demo" />
   <include file="meta.zcml" />
 
   <!-- Profile and upgrades -->
