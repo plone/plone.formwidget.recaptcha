@@ -27,8 +27,16 @@ Add the following code to your buildout.cfg to install plone.formwidget.recaptch
 ReCaptcha setup
 ---------------
 
-Before the service will work, you must obtain a public and private key from
-`developers.google.com/recaptcha <https://developers.google.com/recaptcha/>`_, and configure them at ``http://path/to/site/@@recaptcha-settings``
+There is a control panel at ``http://path/to/site/@@recaptcha-settings`` to configure the Addon.
+Google provides a set of test keys, that can be used to try out the recaptcha form
+and documentation at https://developers.google.com/recaptcha/docs/faq.
+
+``Site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI``
+
+``Secret key: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe``
+
+To actually use the service, you must obtain a site key and secret key from
+`developers.google.com/recaptcha <https://developers.google.com/recaptcha/>`_
 
 Usage
 -----
@@ -37,8 +45,9 @@ See the `demo <https://github.com/plone/plone.formwidget.recaptcha/tree/master/s
 Upgrade to API v2
 -----------------
 
-plone.formwidget.recaptcha 2.* uses V2 of the reCaptcha API. Users upgrading from plone.formwidget.recaptcha
-1.* will therefore need to generate new keys as global Keys are not supported in the V2 API.
+plone.formwidget.recaptcha 2.* uses V2 of the reCaptcha API.
+Users upgrading from plone.formwidget.recaptcha 1.* will therefore need to generate new keys
+as global Keys are not supported in the V2 API.
 
 Source Code
 -----------
