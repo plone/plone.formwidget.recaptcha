@@ -2,18 +2,16 @@
 # Code taken from external dependency
 # https://pypi.org/project/norecaptcha/, which is not
 # updated to Python 3
-import urllib
+import six
+
+from six.moves.urllib import parse
+from six.moves.urllib.request import Request
+from six.moves.urllib.request import urlopen
 
 try:
     import json
 except ImportError:
     import simplejson as json
-
-try:
-    # test if it's Python 3
-    from urllib.request import Request, urlopen
-except:
-    from urllib2 import Request, urlopen
 
 
 VERIFY_SERVER = "www.google.com"
@@ -122,10 +120,15 @@ def submit(recaptcha_response_field,
             return s.encode('utf-8')
         return s
 
-    params = urllib.urlencode({
-        'secret': encode_if_necessary(secret_key),
-        'remoteip': encode_if_necessary(remoteip),
-        'response': encode_if_necessary(recaptcha_response_field),
+    if six.PY2:
+        secret_key = encode_if_necessary(secret_key)
+        remoteip = encode_if_necessary(remoteip)
+        recaptcha_response_field = encode_if_necessary(recaptcha_response_field)
+
+    params = parse.urlencode({
+        'secret': secret_key,
+        'remoteip': remoteip,
+        'response': recaptcha_response_field,
     })
 
     request = Request(
@@ -136,6 +139,9 @@ def submit(recaptcha_response_field,
             "User-agent": "noReCAPTCHA Python"
         }
     )
+
+    if six.PY3:
+        request.data = request.data.encode('utf-8')
 
     httpresp = urlopen(request)
 
