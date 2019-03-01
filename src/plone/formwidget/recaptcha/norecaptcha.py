@@ -123,7 +123,8 @@ def submit(recaptcha_response_field,
     if six.PY2:
         secret_key = encode_if_necessary(secret_key)
         remoteip = encode_if_necessary(remoteip)
-        recaptcha_response_field = encode_if_necessary(recaptcha_response_field)
+        recaptcha_response_field = encode_if_necessary(
+            recaptcha_response_field)
 
     params = parse.urlencode({
         'secret': secret_key,
