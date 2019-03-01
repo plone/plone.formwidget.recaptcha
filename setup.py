@@ -36,7 +36,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'norecaptcha>=0.3',
         'plone.app.registry',
         'plone.registry',
         'Products.CMFCore',

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from Products.Five import BrowserView
-from norecaptcha.captcha import displayhtml, submit
+from plone.formwidget.recaptcha.norecaptcha import displayhtml, submit
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
 from plone.registry.interfaces import IRegistry
 from zope import schema
