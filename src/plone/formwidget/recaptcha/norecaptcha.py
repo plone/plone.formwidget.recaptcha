@@ -24,7 +24,7 @@ class RecaptchaResponse(object):
         self.error_code = error_code
 
     def __repr__(self):
-        return "Recaptcha response: %s %s" % (
+        return "Recaptcha response: {0} {1}".format(
             self.is_valid, self.error_code)
 
     def __str__(self):
