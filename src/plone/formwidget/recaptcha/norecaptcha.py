@@ -133,7 +133,7 @@ def submit(recaptcha_response_field,
     })
 
     request = Request(
-        url="https://%s/recaptcha/api/siteverify" % verify_server,
+        url="https://{0}/recaptcha/api/siteverify".format(verify_server),
         data=params,
         headers={
             "Content-type": "application/x-www-form-urlencoded",
