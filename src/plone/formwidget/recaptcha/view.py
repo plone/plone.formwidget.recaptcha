@@ -56,6 +56,7 @@ class RecaptchaView(BrowserView):
         return None
 
     def verify(self, input=None):
+        import pdb; pdb.set_trace()
         info = IRecaptchaInfo(self.request)
         if info.verified:
             return True
