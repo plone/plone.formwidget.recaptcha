@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Python 3 compatibility
-  [staeff]
+  [staeff, petschki]
 
 
 2.1.0 (2019-02-20)
