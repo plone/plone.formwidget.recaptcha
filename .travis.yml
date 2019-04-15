@@ -27,7 +27,9 @@ install:
   - pip install -r requirements-$PLONE_VERSION.txt
   - buildout -Nc plone-$PLONE_VERSION.cfg
 script:
-  - bin/code-analysis
+# do code-analysis only on latest plone because there's
+# a strange error with configparser in version < 5.1
+  - echo $PLONE_VERSION | grep -v 5.2.x || bin/code-analysis
   - bin/test
 after_success:
   - bin/coverage.sh
