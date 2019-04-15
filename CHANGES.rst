@@ -1,12 +1,11 @@
 Changelog
 =========
 
-2.2.0 (unreleased)
-------------------
+.. You should *NOT* be adding new change log entries to this file, this
+   file is managed by towncrier. You *may* edit previous change logs to
+   fix problems like typo corrections or such.
 
-- Python 3 compatibility
-  [staeff, petschki]
-
+.. towncrier release notes start
 
 2.1.0 (2019-02-20)
 ------------------
