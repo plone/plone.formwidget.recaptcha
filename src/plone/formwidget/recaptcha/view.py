@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from Products.Five import BrowserView
-from plone import api
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
 from plone.formwidget.recaptcha.norecaptcha import displayhtml
 from plone.formwidget.recaptcha.norecaptcha import submit

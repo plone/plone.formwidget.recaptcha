@@ -4,7 +4,7 @@ Changelog
 2.2.0 (unreleased)
 ------------------
 
-- Python 3
+- Python 3 compatibility
   [staeff]
 
 
