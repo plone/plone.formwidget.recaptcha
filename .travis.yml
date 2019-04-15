@@ -25,6 +25,7 @@ before_install:
   - mkdir -p buildout-cache/eggs
 install:
   - pip install -r requirements-$PLONE_VERSION.txt
+  - buildout -Nc plone-$PLONE_VERSION.cfg annotate
   - buildout -Nc plone-$PLONE_VERSION.cfg
 script:
 # do code-analysis only on latest plone because there's
