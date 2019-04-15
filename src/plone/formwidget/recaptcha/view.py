@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 from Products.Five import BrowserView
-from plone.formwidget.recaptcha.norecaptcha import displayhtml, submit
+from plone import api
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
+from plone.formwidget.recaptcha.norecaptcha import displayhtml
+from plone.formwidget.recaptcha.norecaptcha import submit
 from plone.registry.interfaces import IRegistry
 from zope import schema
 from zope.annotation import factory
 from zope.component import adapter
 from zope.component import queryUtility
+from zope.component.hooks import getSite
 from zope.interface import Interface
 from zope.interface import implementer
 from zope.publisher.interfaces.browser import IBrowserRequest
@@ -39,10 +42,10 @@ class RecaptchaView(BrowserView):
 
     def image_tag(self):
         if not self.settings.public_key:
-            raise ValueError(
-                'No recaptcha public key configured. Go to '
-                'path/to/site/@@recaptcha-settings to configure.'
-            )
+            return """No recaptcha public key configured. Go to
+                <a href="{}/@@recaptcha-settings" target=_blank>
+                Recaptcha Settings</a> to configure.""".format(
+                    getSite().absolute_url())
         lang = self.request.get('LANGUAGE', 'en')
         return displayhtml(
             self.settings.public_key,
@@ -56,7 +59,6 @@ class RecaptchaView(BrowserView):
         return None
 
     def verify(self, input=None):
-        import pdb; pdb.set_trace()
         info = IRecaptchaInfo(self.request)
         if info.verified:
             return True

@@ -116,7 +116,7 @@ def submit(recaptcha_response_field,
         )
 
     def encode_if_necessary(s):
-        if isinstance(s, unicode):
+        if isinstance(s, six.text_type):
             return s.encode('utf-8')
         return s
 
