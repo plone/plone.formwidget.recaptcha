@@ -1,10 +1,11 @@
 Changelog
 =========
 
-2.1.1 (unreleased)
+2.2.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Python 3 compatibility
+  [staeff, petschki]
 
 
 2.1.0 (2019-02-20)

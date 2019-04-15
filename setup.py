@@ -36,10 +36,10 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'norecaptcha>=0.3',
         'plone.app.registry',
         'plone.registry',
         'Products.CMFCore',
+        'requests',
         'setuptools',
         'z3c.form',
         'zope.annotation',
@@ -53,7 +53,9 @@ setup(
     extras_require={
         'test': [
             'interlude',
-            'plone.app.testing',
+            'plone.api',
+            'plone.app.testing[robot]',
+            'plone.app.robotframework[debug]',
         ],
     },
     entry_points="""

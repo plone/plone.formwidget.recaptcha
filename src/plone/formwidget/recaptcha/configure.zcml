@@ -8,6 +8,7 @@
 
   <include package="plone.z3cform" />
   <include package="plone.app.registry" />
+  <include package=".demo" />
   <include file="meta.zcml" />
 
   <!-- Profile and upgrades -->
@@ -19,6 +20,13 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       title="ReCaptcha widget"
   />
+  <gs:registerProfile
+      name="uninstall"
+      title="plone.formwidgets.recaptcha (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the plone.formwidgets.recaptcha add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
   <gs:upgradeStep
       description=""
       destination="2"

@@ -1,6 +1,5 @@
 language: python
 sudo: false
-dist: xenial
 cache:
   pip: true
   directories:
@@ -20,20 +19,18 @@ matrix:
       env: PLONE_VERSION=5.2.x
     - python: 3.7
       env: PLONE_VERSION=5.2.x
-  allow_failures:
-    - python: 3.6
-    - python: 3.7
+      dist: xenial
 before_install:
   - mkdir -p buildout-cache/downloads
   - mkdir -p buildout-cache/eggs
 install:
   - pip install -r requirements-$PLONE_VERSION.txt
+  - buildout -Nc plone-$PLONE_VERSION.cfg annotate
   - buildout -Nc plone-$PLONE_VERSION.cfg
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
 script:
-  - bin/code-analysis
+# do code-analysis only on latest plone because there's
+# a strange error with configparser in version < 5.1
+  - echo $PLONE_VERSION | grep -v 5.2.x || bin/code-analysis
   - bin/test
 after_success:
   - bin/coverage.sh
@@ -43,4 +40,4 @@ after_failure:
   - bin/csslint --version
   - bin/jshint --version
   - bin/jscs --version
-  - firefox -v
+
