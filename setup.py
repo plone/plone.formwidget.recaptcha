@@ -53,6 +53,7 @@ setup(
     extras_require={
         'test': [
             'interlude',
+            'plone.api',
             'plone.app.testing[robot]',
             'plone.app.robotframework[debug]',
         ],
