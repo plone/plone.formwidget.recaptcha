@@ -7,6 +7,16 @@ Changelog
 
 .. towncrier release notes start
 
+2.2.0 (2019-07-10)
+------------------
+
+New features:
+
+
+- Python 3 compatibility
+  [staeff, petschki] (#19)
+
+
 2.1.0 (2019-02-20)
 ------------------
 
