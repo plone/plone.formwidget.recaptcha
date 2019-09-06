@@ -11,6 +11,20 @@
   <include package=".demo" />
   <include file="meta.zcml" />
 
+  <!-- Supermodel -->
+  <include package="plone.supermodel" />
+
+  <utility
+      component=".supermodel.CaptchaHandler"
+      name="plone.formwidget.recaptcha.ReCaptchaWidget"
+      />
+
+  <adapter
+      factory=".widget.ReCaptchaFieldWidget"
+      for="plone.formwidget.recaptcha.supermodel.ICaptchaField
+           z3c.form.interfaces.IFormLayer"
+      />
+
   <!-- Profile and upgrades -->
   <gs:registerProfile
       description="z3c.form ReCaptcha widget."

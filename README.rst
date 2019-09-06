@@ -42,6 +42,16 @@ Usage
 -----
 See the `demo <https://github.com/plone/plone.formwidget.recaptcha/tree/master/src/plone/formwidget/recaptcha/demo>`_ folder inside the distribution for an example usage.
 
+Supermodel
+^^^^^^^^^^
+You can add a captcha field in an XML model by adding something like this::
+
+    <field name="captcha" type="plone.formwidget.recaptcha.ReCaptchaWidget">
+      <title>Solve Captcha</title>
+      <description></description>
+    </field>
+
+
 Upgrade to API v2
 -----------------
 
