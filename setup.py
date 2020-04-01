@@ -2,13 +2,14 @@
 from setuptools import find_packages
 from setuptools import setup
 
-version = '2.2.0'
+
+version = "2.2.0"
 
 description = open("README.rst").read() + "\n"
 description += open("CHANGES.rst").read()
 
 setup(
-    name='plone.formwidget.recaptcha',
+    name="plone.formwidget.recaptcha",
     version=version,
     description="ReCaptcha widget for Plone.",
     long_description=description,
@@ -25,37 +26,37 @@ setup(
         "Programming Language :: Python :: 2.7",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    keywords='plone discussion plone.app.discussion spam captcha recaptcha',
-    author='Timo Stollenwerk - Plone Foundation',
-    author_email='plone-developers@lists.sourceforge.net',
-    url='https://github.com/plone/plone.formwidget.recaptcha',
-    license='GPLv2',
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
-    namespace_packages=['plone', 'plone.formwidget'],
+    keywords="plone discussion plone.app.discussion spam captcha recaptcha",
+    author="Timo Stollenwerk - Plone Foundation",
+    author_email="plone-developers@lists.sourceforge.net",
+    url="https://github.com/plone/plone.formwidget.recaptcha",
+    license="GPLv2",
+    packages=find_packages("src"),
+    package_dir={"": "src"},
+    namespace_packages=["plone", "plone.formwidget"],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'plone.app.registry',
-        'plone.registry',
-        'Products.CMFCore',
-        'requests',
-        'setuptools',
-        'z3c.form',
-        'zope.annotation',
-        'zope.component',
-        'zope.i18nmessageid ',
-        'zope.interface',
-        'zope.publisher',
-        'zope.schema',
-        'Zope2',
+        "plone.app.registry",
+        "plone.registry",
+        "Products.CMFCore",
+        "requests",
+        "setuptools",
+        "z3c.form",
+        "zope.annotation",
+        "zope.component",
+        "zope.i18nmessageid ",
+        "zope.interface",
+        "zope.publisher",
+        "zope.schema",
+        "Zope2",
     ],
     extras_require={
-        'test': [
-            'interlude',
-            'plone.api',
-            'plone.app.testing[robot]',
-            'plone.app.robotframework[debug]',
+        "test": [
+            "interlude",
+            "plone.api",
+            "plone.app.testing[robot]",
+            "plone.app.robotframework[debug]",
         ],
     },
     entry_points="""

@@ -6,24 +6,25 @@ from zope.interface import Interface
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
-_ = MessageFactory('plone.formwidget.recaptcha')
+
+_ = MessageFactory("plone.formwidget.recaptcha")
 
 display_themes = SimpleVocabulary(
     [
-        SimpleTerm(value=u'light', title=_(u'light')),
-        SimpleTerm(value=u'dark', title=_(u'dark')),
+        SimpleTerm(value=u"light", title=_(u"light")),
+        SimpleTerm(value=u"dark", title=_(u"dark")),
     ]
 )
 display_types = SimpleVocabulary(
     [
-        SimpleTerm(value=u'image', title=_(u'image')),
-        SimpleTerm(value=u'audio', title=_(u'audio')),
+        SimpleTerm(value=u"image", title=_(u"image")),
+        SimpleTerm(value=u"audio", title=_(u"audio")),
     ]
 )
 display_sizes = SimpleVocabulary(
     [
-        SimpleTerm(value=u'normal', title=_(u'normal')),
-        SimpleTerm(value=u'compact', title=_(u'compact')),
+        SimpleTerm(value=u"normal", title=_(u"normal")),
+        SimpleTerm(value=u"compact", title=_(u"compact")),
     ]
 )
 
@@ -51,17 +52,11 @@ class IReCaptchaSettings(Interface):
     # - Search control panel: Show comments in search results
 
     public_key = schema.TextLine(
-        title=_(u"Public Key"),
-        description=_(u""),
-        required=True,
-        default=u""
+        title=_(u"Public Key"), description=_(u""), required=True, default=u""
     )
 
     private_key = schema.TextLine(
-        title=_(u"Private Key"),
-        description=_(u""),
-        required=True,
-        default=u""
+        title=_(u"Private Key"), description=_(u""), required=True, default=u""
     )
 
     display_theme = schema.Choice(
@@ -86,5 +81,4 @@ class IReCaptchaSettings(Interface):
         required=True,
         default=u"normal",
         vocabulary=display_sizes,
-
     )

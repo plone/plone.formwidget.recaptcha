@@ -19,13 +19,13 @@ class ReCaptchaWidget(text.TextWidget):
 
     def captchaImage(self):
         self.captcha = getMultiAdapter(
-            (aq_inner(self.context), self.request), name='captcha'
+            (aq_inner(self.context), self.request), name="captcha"
         )
         return self.captcha.image_tag()
 
     def captchaAudio(self):
         self.captcha = getMultiAdapter(
-            (aq_inner(self.context), self.request), name='captcha'
+            (aq_inner(self.context), self.request), name="captcha"
         )
         return self.captcha.audio_url()
 
