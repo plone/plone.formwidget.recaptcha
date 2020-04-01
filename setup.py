@@ -51,14 +51,7 @@ setup(
         "zope.schema",
         "Zope2",
     ],
-    extras_require={
-        "test": [
-            "interlude",
-            "plone.api",
-            "plone.app.testing[robot]",
-            "plone.app.robotframework[debug]",
-        ],
-    },
+    extras_require={"test": ["plone.app.testing",],},
     entry_points="""
     [z3c.autoinclude.plugin]
     target = plone

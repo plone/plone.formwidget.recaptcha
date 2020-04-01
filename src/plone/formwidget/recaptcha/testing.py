@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
-from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
@@ -30,20 +28,4 @@ PLONE_FORMWIDGET_RECAPTCHA_FIXTURE = PloneFormwidgetRecaptchaLayer()
 PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING = IntegrationTesting(
     bases=(PLONE_FORMWIDGET_RECAPTCHA_FIXTURE,),
     name="PloneFormwidgetRecaptchaLayer:IntegrationTesting",
-)
-
-
-PLONE_FORMWIDGET_RECAPTCHA_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(PLONE_FORMWIDGET_RECAPTCHA_FIXTURE,),
-    name="PloneFormwidgetRecaptchaLayer:FunctionalTesting",
-)
-
-
-PLONE_FORMWIDGET_RECAPTCHA_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(
-        PLONE_FORMWIDGET_RECAPTCHA_FIXTURE,
-        REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE,
-    ),
-    name="PloneFormwidgetRecaptchaLayer:AcceptanceTesting",
 )

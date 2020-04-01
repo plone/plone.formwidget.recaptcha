@@ -1,7 +1,4 @@
-<configure
-    xmlns:meta="http://namespaces.zope.org/meta"
-    xmlns:zcml="http://namespaces.zope.org/zcml"
-    >
+<configure xmlns:meta="http://namespaces.zope.org/meta">
 
   <!-- Declare that plone.formwidget.recaptcha provides a Captcha field that
          can be used by plone.app.discussion to add a Captcha field to comment

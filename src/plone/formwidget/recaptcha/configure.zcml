@@ -2,18 +2,16 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:gs="http://namespaces.zope.org/genericsetup"
-    xmlns:meta="http://namespaces.zope.org/meta"
     xmlns:z3c="http://namespaces.zope.org/z3c"
-    i18n_domain="plone.formwidget.recaptcha"
     >
 
   <include package="plone.z3cform" />
   <include package="plone.app.registry" />
+  <include package="plone.supermodel" />
+
   <include package=".demo" />
   <include file="meta.zcml" />
 
-  <!-- Supermodel -->
-  <include package="plone.supermodel" />
 
   <utility
       name="plone.formwidget.recaptcha.ReCaptchaWidget"
@@ -90,9 +88,7 @@
   <!-- make security assertions for use from restricted Python -->
   <class class="plone.formwidget.recaptcha.view.RecaptchaView">
     <allow
-        attributes="
-          image_tag audio_url verify external;
-        "
+        attributes="image_tag audio_url verify external"
         />
   </class>
 
