@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
-from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.formwidget.recaptcha.testing import PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING  # noqa: E501
 
+import plone.api
 import unittest
 
 
@@ -25,7 +25,7 @@ class TestSetup(unittest.TestCase):
         if get_installer:
             self.installer = get_installer(self.portal, self.layer["request"])
         else:
-            self.installer = api.portal.get_tool("portal_quickinstaller")
+            self.installer = plone.api.portal.get_tool("portal_quickinstaller")
 
     def test_product_installed(self):
         """Test if plone.formwidget.recaptcha is installed."""
@@ -48,8 +48,8 @@ class TestUninstall(unittest.TestCase):
         if get_installer:
             self.installer = get_installer(self.portal, self.layer["request"])
         else:
-            self.installer = api.portal.get_tool("portal_quickinstaller")
-        roles_before = api.user.get_roles(TEST_USER_ID)
+            self.installer = plone.api.portal.get_tool("portal_quickinstaller")
+        roles_before = plone.api.user.get_roles(TEST_USER_ID)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
         self.installer.uninstallProducts(["plone.formwidget.recaptcha"])
         setRoles(self.portal, TEST_USER_ID, roles_before)
