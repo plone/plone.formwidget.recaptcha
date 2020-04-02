@@ -33,11 +33,11 @@ script:
   - echo $PLONE_VERSION | grep -v 5.2.x || bin/code-analysis
   - bin/test
 after_success:
-  - bin/coverage.sh
-  - pip install coveralls
-  - coveralls
+  - echo $PLONE_VERSION | grep -v 5.2.x || bin/coverage.sh
+  - echo $PLONE_VERSION | grep -v 5.2.x || pip install coveralls
+  - echo $PLONE_VERSION | grep -v 5.2.x || coveralls
 after_failure:
-  - bin/csslint --version
-  - bin/jshint --version
-  - bin/jscs --version
+  - echo $PLONE_VERSION | grep -v 5.2.x || bin/csslint --version
+  - echo $PLONE_VERSION | grep -v 5.2.x || bin/jshint --version
+  - echo $PLONE_VERSION | grep -v 5.2.x || bin/jscs --version
 

@@ -1,116 +1,117 @@
 <configure
-    i18n_domain="plone.formwidget.recaptcha"
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:gs="http://namespaces.zope.org/genericsetup"
-    xmlns:meta="http://namespaces.zope.org/meta"
-    xmlns:z3c="http://namespaces.zope.org/z3c">
+    xmlns:z3c="http://namespaces.zope.org/z3c"
+    >
 
   <include package="plone.z3cform" />
   <include package="plone.app.registry" />
+  <include package="plone.supermodel" />
+
   <include package=".demo" />
   <include file="meta.zcml" />
 
-  <!-- Supermodel -->
-  <include package="plone.supermodel" />
 
   <utility
-      component=".supermodel.CaptchaHandler"
       name="plone.formwidget.recaptcha.ReCaptchaWidget"
+      component=".supermodel.CaptchaHandler"
       />
 
   <adapter
-      factory=".widget.ReCaptchaFieldWidget"
       for="plone.formwidget.recaptcha.supermodel.ICaptchaField
            z3c.form.interfaces.IFormLayer"
+      factory=".widget.ReCaptchaFieldWidget"
       />
 
   <!-- Profile and upgrades -->
   <gs:registerProfile
-      description="z3c.form ReCaptcha widget."
-      directory="profiles/default"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       name="default"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
       title="ReCaptcha widget"
-  />
+      description="z3c.form ReCaptcha widget."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      directory="profiles/default"
+      />
   <gs:registerProfile
       name="uninstall"
       title="plone.formwidgets.recaptcha (uninstall)"
-      directory="profiles/uninstall"
       description="Uninstalls the plone.formwidgets.recaptcha add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
       />
   <gs:upgradeStep
+      title="Install browser layer"
       description=""
       destination="2"
       handler=".upgrades.install_browserlayer"
       profile="plone.formwidget.recaptcha:default"
       source="1"
-      title="Install browser layer"
-  />
+      />
   <gs:upgradeStep
+      title="Re-Apply registry: load new controlpanel values"
       description=""
       destination="3"
       handler=".upgrades.reapply_registry"
       profile="plone.formwidget.recaptcha:default"
       source="2"
-      title="Re-Apply registry: load new controlpanel values"
-  />
+      />
   <gs:upgradeStep
+      title="Remove obsolete JavaScript"
       description=""
       destination="4"
       handler=".upgrades.to_4"
       profile="plone.formwidget.recaptcha:default"
       source="3"
-      title="Remove obsolete JavaScript"
-  />
+      />
 
   <!-- Control panel -->
   <browser:page
-      class=".controlpanel.ReCaptchaSettingsControlPanel"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      layer=".interfaces.IReCaptchaLayer"
       name="recaptcha-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       permission="cmf.ManagePortal"
-  />
+      class=".controlpanel.ReCaptchaSettingsControlPanel"
+      layer=".interfaces.IReCaptchaLayer"
+      />
 
 
   <adapter factory=".view.RecaptchaInfo" />
 
   <browser:view
-      class=".view.RecaptchaView"
-      for="*"
-      layer=".interfaces.IReCaptchaLayer"
       name="recaptcha"
+      for="*"
       permission="zope2.Public"
-  />
+      class=".view.RecaptchaView"
+      layer=".interfaces.IReCaptchaLayer"
+      />
 
   <!-- make security assertions for use from restricted Python -->
   <class class="plone.formwidget.recaptcha.view.RecaptchaView">
-    <allow attributes="image_tag audio_url verify external" />
+    <allow
+        attributes="image_tag audio_url verify external"
+        />
   </class>
 
   <!-- ReCaptcha widget -->
   <class class=".widget.ReCaptchaWidget">
     <require
-        interface="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
         permission="zope.Public"
-    />
+        interface="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
+        />
   </class>
 
   <z3c:widgetTemplate
+      template="widget_display.pt"
       layer="z3c.form.interfaces.IFormLayer"
       mode="display"
-      template="widget_display.pt"
       widget="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
-  />
+      />
 
   <z3c:widgetTemplate
+      template="widget.pt"
       layer="z3c.form.interfaces.IFormLayer"
       mode="input"
-      template="widget.pt"
       widget="plone.formwidget.recaptcha.interfaces.IReCaptchaWidget"
-  />
+      />
 
 </configure>

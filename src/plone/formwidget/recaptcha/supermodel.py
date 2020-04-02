@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from Acquisition import aq_inner
-from zope.component import getMultiAdapter
-from plone.supermodel.exportimport import ObjectHandler
-from zope.interface import implementer
-from zope.schema.interfaces import IField
-from zope.schema import Field
 from plone.formwidget.recaptcha.validator import WrongCaptchaCode
+from plone.supermodel.exportimport import ObjectHandler
+from zope.component import getMultiAdapter
+from zope.interface import implementer
+from zope.schema import Field
+from zope.schema.interfaces import IField
 
 
 class ICaptchaField(IField):
@@ -14,7 +14,6 @@ class ICaptchaField(IField):
 
 @implementer(ICaptchaField)
 class CaptchaField(Field):
-
     def get(self, object):
         # Captcha field should never save anything in the object itself
         return None
@@ -25,8 +24,7 @@ class CaptchaField(Field):
 
     def validate(self, value):
         captcha = getMultiAdapter(
-            (aq_inner(self.context), self.context.REQUEST),
-            name='recaptcha'
+            (aq_inner(self.context), self.context.REQUEST), name="recaptcha"
         )
         if not captcha.verify():
             raise WrongCaptchaCode
