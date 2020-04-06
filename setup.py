@@ -40,7 +40,6 @@ setup(
         "plone.app.registry",
         "plone.registry",
         "Products.CMFCore",
-        "requests",
         "setuptools",
         "z3c.form",
         "zope.annotation",
