@@ -12,7 +12,7 @@ class ReCaptchaSettingsEditForm(controlpanel.RegistryEditForm):
         u"In order to use ReCaptcha v2 on your Plone site, go to "
         u"https://developers.google.com/recaptcha/ to create an account and "
         u"to receive your private and public key. Then configure them at "
-        u"http://path/to/site/@@recaptcha-settings. If you don't want to "
+        u"https://path/to/site/@@recaptcha-settings. If you don't want to "
         u"rely on an external service for captcha, you might want to consider "
         u"using plone.formwidget.captcha instead."
     )

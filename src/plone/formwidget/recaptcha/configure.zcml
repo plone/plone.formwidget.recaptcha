@@ -68,7 +68,7 @@
   <!-- Control panel -->
   <browser:page
       name="recaptcha-settings"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      for="zope.component.interfaces.ISite"
       permission="cmf.ManagePortal"
       class=".controlpanel.ReCaptchaSettingsControlPanel"
       layer=".interfaces.IReCaptchaLayer"
