@@ -7,6 +7,24 @@ Changelog
 
 .. towncrier release notes start
 
+2.3.0 (2021-03-01)
+------------------
+
+New features:
+
+
+- Provide a field to be used from an XML model
+  [frapell] (#24)
+- Subsite support (i.e. collective.lineage) [jensens] (#28)
+
+
+Bug fixes:
+
+
+- Format code according to Plone standards: black, isort, zpretty. (#27)
+- Move CI from TravisCI to Github Actions [jensens] (#29)
+
+
 2.2.0 (2019-07-10)
 ------------------
 
