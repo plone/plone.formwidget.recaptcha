@@ -49,20 +49,20 @@ def displayhtml(
 
     return """
 <script
-  src="https://www.google.com/recaptcha/api.js?hl=%(LanguageCode)s&fallback=%(Fallback)s&"
+  src="https://www.google.com/recaptcha/api.js?hl={LanguageCode}&fallback={Fallback}&"
   async="async" defer="defer"></script>
 <div class="g-recaptcha"
-    data-sitekey="%(SiteKey)s"
-    data-theme="%(Theme)s"
-    data-type="%(Type)s"
-    data-size="%(Size)s">
+    data-sitekey="{SiteKey}"
+    data-theme="{Theme}"
+    data-type="{Type}"
+    data-size="{Size}">
 </div>
 <noscript>
   <div  style="width: 302px; height: 480px;">
     <div style="width: 302px; height: 422px; position: relative;">
       <div style="width: 302px; height: 422px; position: relative;">
         <iframe
-          src="https://www.google.com/recaptcha/api/fallback?k=%(SiteKey)s&hl=%(LanguageCode)s"
+          src="https://www.google.com/recaptcha/api/fallback?k={SiteKey}&hl={LanguageCode}"
           frameborder="0" scrolling="no"
           style="width: 302px; height:422px; border-style: none;">
         </iframe>
@@ -82,14 +82,16 @@ def displayhtml(
     </div>
   </div>
 </noscript>
-""" % {
-        "LanguageCode": language,
-        "SiteKey": site_key,
-        "Theme": theme,
-        "Type": d_type,
-        "Size": size,
-        "Fallback": fallback,
-    }
+""".format(
+        **{
+            "LanguageCode": language,
+            "SiteKey": site_key,
+            "Theme": theme,
+            "Type": d_type,
+            "Size": size,
+            "Fallback": fallback,
+        }
+    )
 
 
 def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_SERVER):

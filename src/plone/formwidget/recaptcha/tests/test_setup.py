@@ -2,7 +2,9 @@
 """Setup tests for this package."""
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-from plone.formwidget.recaptcha.testing import PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING  # noqa: E501
+from plone.formwidget.recaptcha.testing import (
+    PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING,
+)
 
 import plone.api
 import unittest
