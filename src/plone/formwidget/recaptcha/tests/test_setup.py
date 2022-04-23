@@ -35,8 +35,8 @@ class TestSetup(unittest.TestCase):
 
     def test_browserlayer(self):
         """Test that IReCaptchaLayer is registered."""
-        from plone.formwidget.recaptcha.interfaces import IReCaptchaLayer
         from plone.browserlayer import utils
+        from plone.formwidget.recaptcha.interfaces import IReCaptchaLayer
 
         self.assertIn(IReCaptchaLayer, utils.registered_layers())
 
@@ -64,7 +64,7 @@ class TestUninstall(unittest.TestCase):
 
     def test_browserlayer_removed(self):
         """Test that IReCaptchaLayer is removed."""
-        from plone.formwidget.recaptcha.interfaces import IReCaptchaLayer
         from plone.browserlayer import utils
+        from plone.formwidget.recaptcha.interfaces import IReCaptchaLayer
 
         self.assertNotIn(IReCaptchaLayer, utils.registered_layers())
