@@ -5,60 +5,52 @@ on: [push]
 jobs:
   build:
     strategy:
-      matrix:
-        python-version:
-        - "2.7"
-        - "3.6"
-        - "3.7"
-        - "3.8"    
-        plone-version:
-        - "4.3"
-        - "5.2"
-        exclude:
-        - python-version: "3.6"
-          plone-version: "4.3"
-        - python-version: "3.7"
-          plone-version: "4.3" 
-        - python-version: "3.8"
-          plone-version: "4.3"
+        matrix:
+            plone-version: ['Plone52', 'Plone51', 'Plone50', 'Plone43']
+            python-version: [2.7]
+            include:
+                - plone-version: 'Plone52'
+                  python-version: 3.6
+                - plone-version: 'Plone52'
+                  python-version: 3.7
+                - plone-version: 'Plone52'
+                  python-version: 3.8
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install on Linux
-      run: |
-        sudo apt-get install libxml2-dev libxslt1-dev libjpeg-dev
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}   
-    - name: "Install Python dependencies (pip)"
-      uses: "py-actions/py-dependency-install@v2"
-      with:
-        path: "requirements-${{ matrix.plone-version }}.x.txt"
-        update-setuptools: "false"
-        update-pip: "true"
-        update-wheel: "true"
-    - name: Cache eggs
-      uses: actions/cache@v2
-      with:
-        path: |
-          eggs
-          downloads
-        key: eggs-${{ matrix.python-version }}-${{ matrix.plone-version }}-${{ hashFiles('**/*.cfg') }}
-        restore-keys: eggs-
-    - name: Run buildout
-      run: |
-        buildout -c plone-${{ matrix.plone-version }}.x.cfg
-    - name: Run tests
-      run: |
-        bin/test
-    - name: Run code code-analysis
-      if: matrix.python-version == '3.8'
-      run: |
-        bin/code-analysis
-    # - name: Run coverage
-    #   if: matrix.python-version == '3.8'
-    #   run: |
-    #     bash bin/coverage.sh
-    #     pip install coveralls
-    #     coveralls
+        - uses: actions/checkout@v2
+        - uses: actions/cache@v2
+          with:
+              path: |
+                ~/.cache/pip
+                ~/buildout-cache/eggs
+                ~/extends
+                webpack/node_modules
+              key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ matrix.plone-version }}-${{ hashFiles('**/setup.py') }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/*.cfg') }}-${{ hashFiles('**/constraints.txt') }}-${{ hashFiles('**/tox.ini') }}
+        - name: Set up Python ${{ matrix.python-version }}
+          uses: actions/setup-python@v2
+          with:
+              python-version: ${{ matrix.python-version }}
+        - name: Install system libraries
+          run: sudo apt-get install libxml2-dev libxslt1-dev libjpeg-dev
+        - name: setup buildout cache
+          run: |
+              mkdir -p ~/buildout-cache/{eggs,downloads}
+              mkdir ~/.buildout
+              echo "[buildout]" > $HOME/.buildout/default.cfg
+              echo "download-cache = $HOME/buildout-cache/downloads" >> $HOME/.buildout/default.cfg
+              echo "eggs-directory = $HOME/buildout-cache/eggs" >> $HOME/.buildout/default.cfg
+        - name: Install dependencies
+          run: |
+              python -m pip install --upgrade pip
+              pip install tox tox-gh-actions
+        - name: Black-Check
+          run: |
+              tox -r -e black-check
+        - name: lint
+          run: tox -r -e py38-lint
+        - name: Test with tox
+          run: |
+              tox -r
+          env:
+            PLONE-VERSION: ${{ matrix.plone-version }}
+            PYTHON-VERSION: ${{ matrix.python-version }}
