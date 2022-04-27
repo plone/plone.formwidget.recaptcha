@@ -30,7 +30,7 @@ class ReCaptcha(object):
 
 
 class BaseForm(form.Form):
-    """ example captcha form """
+    """example captcha form"""
 
     fields = field.Fields(IReCaptchaForm)
     fields["captcha"].widgetFactory = ReCaptchaFieldWidget

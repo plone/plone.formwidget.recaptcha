@@ -42,4 +42,4 @@ def to_4(context):
             resources.value.remove(res)
 
         if res in registry.records:
-            del registry.records["plone.resources/%s" % res]
+            del registry.records["plone.resources/{0}".format(res)]

@@ -34,8 +34,7 @@ class IReCaptchaLayer(Interface):
 
 
 class IReCaptchaWidget(interfaces.IWidget):
-    """Marker interface for the ReCaptcha widget
-    """
+    """Marker interface for the ReCaptcha widget"""
 
 
 class IReCaptchaSettings(Interface):

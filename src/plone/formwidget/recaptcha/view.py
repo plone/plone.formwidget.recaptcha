@@ -40,10 +40,10 @@ class RecaptchaView(BrowserView):
     def image_tag(self):
         if not self.settings.public_key:
             return """No recaptcha public key configured.
-                Go to <a href="{}/@@recaptcha-settings" target=_blank>
+                Go to <a href="{0}/@@recaptcha-settings" target=_blank>
                 Recaptcha Settings</a> to configure.""".format(
                 getSite().absolute_url()
-            )  # noqa: E501
+            )
         lang = self.request.get("LANGUAGE", "en")
         return displayhtml(
             self.settings.public_key,
