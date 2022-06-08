@@ -3,6 +3,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:gs="http://namespaces.zope.org/genericsetup"
     xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     >
 
   <include package="plone.z3cform" />
@@ -10,6 +11,7 @@
   <include package="plone.supermodel" />
 
   <include package=".demo" />
+  <include package=".restapi" zcml:condition="installed plone.restapi" />
   <include file="meta.zcml" />
 
 
