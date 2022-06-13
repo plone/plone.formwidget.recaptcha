@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2022-06-11 19:24+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: eu\n"
+"X-Generator: Poedit 2.3\n"
+
+#: ../controlpanel.py:11
+msgid "In order to use ReCaptcha v2 on your Plone site, go to https://developers.google.com/recaptcha/ to create an account and to receive your private and public key. Then configure them at https://host/path/to/site/@@recaptcha-settings. If you don't want to rely on an external service for captcha, you might want to consider using plone.formwidget.captcha instead."
+msgstr "ReCaptcha erabili ahal izateko joan https://developers.google.com/recaptcha/ helbidera kontu bat sortu eta gako pribatu eta publikoa lortzeko. Ondoren konfiguratu @@recaptcha-settings helbidean. Ez baduzu captcharako kanpo-zerbitzurik erabiltzerik nahi begiratu plone.formwidget.captcha edo collective.z3cform.norobots."
+
+#: ../interfaces.py:56
+msgid "Private Key"
+msgstr "Gako pribatua"
+
+#: ../interfaces.py:52
+msgid "Public Key"
+msgstr "Gako publikoa"
+
+#: ../profiles/default/controlpanel.xml
+msgid "ReCaptcha"
+msgstr "ReCaptcha"
+
+#: ../restapi/controlpanel.py:16
+msgid "ReCaptcha Control Panel"
+msgstr "ReCaptcha Kontrol Panela"
+
+#: ../controlpanel.py:10
+msgid "ReCaptcha v2 settings"
+msgstr "ReCaptcharen ezarpenak"
+
+#: ../interfaces.py:76
+msgid "Size"
+msgstr "Tamaina"
+
+#: ../validator.py:10
+msgid "The code you entered was wrong, please enter the new one."
+msgstr "Sartutako kodea ez da zuzena."
+
+#: ../interfaces.py:61
+msgid "The color theme of the widget."
+msgstr "Widgetaren itxura"
+
+#: ../interfaces.py:77
+msgid "The size of the widget."
+msgstr "Widgetaren tamaina"
+
+#: ../interfaces.py:69
+msgid "The type of CAPTCHA to serve."
+msgstr "Erabili beharreko Captcha"
+
+#: ../interfaces.py:60
+msgid "Theme"
+msgstr "GAia"
+
+#: ../interfaces.py:68
+msgid "Type"
+msgstr "Mota"
+
+#: ../interfaces.py:19
+msgid "audio"
+msgstr "Audioa"
+
+#: ../interfaces.py:25
+msgid "compact"
+msgstr "Konpaktua"
+
+#: ../interfaces.py:13
+msgid "dark"
+msgstr "Iluna"
+
+#: ../interfaces.py:18
+msgid "image"
+msgstr "Irudia"
+
+#: ../interfaces.py:12
+msgid "light"
+msgstr "Argia"
+
+#: ../interfaces.py:24
+msgid "normal"
+msgstr "Normala"

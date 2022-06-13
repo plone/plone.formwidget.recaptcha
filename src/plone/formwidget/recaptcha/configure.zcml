@@ -3,13 +3,19 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:gs="http://namespaces.zope.org/genericsetup"
     xmlns:z3c="http://namespaces.zope.org/z3c"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     >
+
+  <i18n:registerTranslations directory="locales" />
 
   <include package="plone.z3cform" />
   <include package="plone.app.registry" />
   <include package="plone.supermodel" />
 
   <include package=".demo" />
+  <!-- BBB zcml:condition needed only while we support Plone 4.3-->
+  <include package=".restapi" zcml:condition="installed plone.restapi" />
   <include file="meta.zcml" />
 
 
