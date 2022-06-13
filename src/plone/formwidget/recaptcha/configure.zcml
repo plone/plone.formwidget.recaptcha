@@ -14,7 +14,7 @@
   <include package="plone.supermodel" />
 
   <include package=".demo" />
-  <!-- BBB Needed only while we support Plone 4.3-->
+  <!-- BBB zcml:condition needed only while we support Plone 4.3-->
   <include package=".restapi" zcml:condition="installed plone.restapi" />
   <include file="meta.zcml" />
 
