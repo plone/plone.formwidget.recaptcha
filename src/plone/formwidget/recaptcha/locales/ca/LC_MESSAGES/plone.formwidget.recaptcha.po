@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2022-06-11 19:22+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca\n"
+"X-Generator: Poedit 2.3\n"
+
+#: ../controlpanel.py:11
+msgid "In order to use ReCaptcha v2 on your Plone site, go to https://developers.google.com/recaptcha/ to create an account and to receive your private and public key. Then configure them at https://host/path/to/site/@@recaptcha-settings. If you don't want to rely on an external service for captcha, you might want to consider using plone.formwidget.captcha instead."
+msgstr "Per utilitzar ReCaptcha v2 al vostre lloc Plone, aneu a https://developers.google.com/recaptcha/ per crear un compte i rebre la vostra clau privada i pública. Després configureu-lo a @@recaptcha-settings. Si no voleu utilitzar un servei extern per al captcha, considereu utilitzar plone.formwidget.captcha o collective.z3c.norobots."
+
+#: ../interfaces.py:56
+msgid "Private Key"
+msgstr "Clau privada"
+
+#: ../interfaces.py:52
+msgid "Public Key"
+msgstr "Clau pública"
+
+#: ../profiles/default/controlpanel.xml
+msgid "ReCaptcha"
+msgstr "ReCaptcha"
+
+#: ../restapi/controlpanel.py:16
+msgid "ReCaptcha Control Panel"
+msgstr "Panell de Control de Recaptcha"
+
+#: ../controlpanel.py:10
+msgid "ReCaptcha v2 settings"
+msgstr "Configuració de ReCaptcha"
+
+#: ../interfaces.py:76
+msgid "Size"
+msgstr "Mida"
+
+#: ../validator.py:10
+msgid "The code you entered was wrong, please enter the new one."
+msgstr "El codi que heu introduït es incorrecte, introduïu un nou."
+
+#: ../interfaces.py:61
+msgid "The color theme of the widget."
+msgstr "El tema de colors del widget."
+
+#: ../interfaces.py:77
+msgid "The size of the widget."
+msgstr "Mida del widget"
+
+#: ../interfaces.py:69
+msgid "The type of CAPTCHA to serve."
+msgstr "Tipus de CAPTCHA"
+
+#: ../interfaces.py:60
+msgid "Theme"
+msgstr "Tema"
+
+#: ../interfaces.py:68
+msgid "Type"
+msgstr "Tipus"
+
+#: ../interfaces.py:19
+msgid "audio"
+msgstr "Audio"
+
+#: ../interfaces.py:25
+msgid "compact"
+msgstr "Compacte"
+
+#: ../interfaces.py:13
+msgid "dark"
+msgstr "Fosc"
+
+#: ../interfaces.py:18
+msgid "image"
+msgstr "Imatge"
+
+#: ../interfaces.py:12
+msgid "light"
+msgstr "Clar"
+
+#: ../interfaces.py:24
+msgid "normal"
+msgstr "Normal"
