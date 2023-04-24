@@ -20,9 +20,9 @@ New features:
 
 Bug fixes:
 
-
 - Format code according to Plone standards: black, isort, zpretty. (#27)
 - Move CI from TravisCI to Github Actions [jensens] (#29)
+- Do not validate captcha field upon z3c form inline validation. [mathias.leimgruber]
 
 
 2.2.0 (2019-07-10)
