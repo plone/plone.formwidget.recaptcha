@@ -1,10 +1,10 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-06-11 17:18+0000\n"
+"POT-Creation-Date: 2024-09-23 12:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,23 +21,19 @@ msgstr ""
 msgid ""
 msgstr ""
 
+#: ../validator.py:42
+msgid "Captcha validation is incorrect. Try again please."
+msgstr ""
+
 #: ../controlpanel.py:11
 msgid "In order to use ReCaptcha v2 on your Plone site, go to https://developers.google.com/recaptcha/ to create an account and to receive your private and public key. Then configure them at https://host/path/to/site/@@recaptcha-settings. If you don't want to rely on an external service for captcha, you might want to consider using plone.formwidget.captcha instead."
-msgstr ""
-
-#: ../interfaces.py:56
-msgid "Private Key"
-msgstr ""
-
-#: ../interfaces.py:52
-msgid "Public Key"
 msgstr ""
 
 #: ../profiles/default/controlpanel.xml
 msgid "ReCaptcha"
 msgstr ""
 
-#: ../restapi/controlpanel.py:16
+#: ../restapi/controlpanel.py:17
 msgid "ReCaptcha Control Panel"
 msgstr ""
 
@@ -45,32 +41,16 @@ msgstr ""
 msgid "ReCaptcha v2 settings"
 msgstr ""
 
-#: ../interfaces.py:76
-msgid "Size"
+#: ../interfaces.py:56
+msgid "Secret Key"
 msgstr ""
 
-#: ../validator.py:10
+#: ../interfaces.py:52
+msgid "Site Key"
+msgstr ""
+
+#: ../validator.py:21
 msgid "The code you entered was wrong, please enter the new one."
-msgstr ""
-
-#: ../interfaces.py:61
-msgid "The color theme of the widget."
-msgstr ""
-
-#: ../interfaces.py:77
-msgid "The size of the widget."
-msgstr ""
-
-#: ../interfaces.py:69
-msgid "The type of CAPTCHA to serve."
-msgstr ""
-
-#: ../interfaces.py:60
-msgid "Theme"
-msgstr ""
-
-#: ../interfaces.py:68
-msgid "Type"
 msgstr ""
 
 #: ../interfaces.py:19
