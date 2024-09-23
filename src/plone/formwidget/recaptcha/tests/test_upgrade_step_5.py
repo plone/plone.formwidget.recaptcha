@@ -1,6 +1,5 @@
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-# from plone.formwidget.recaptcha.testing import PLONE_FORMWIDGET_RECAPTCHA_FUNCTIONAL_TESTING
 from plone.formwidget.recaptcha.testing import (
     PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING,
 )
@@ -19,12 +18,3 @@ class UpgradeStepIntegrationTest(unittest.TestCase):
     def test_upgrade_step(self):
         # dummy, add tests here
         self.assertTrue(True)
-
-
-# class UpgradeStepFunctionalTest(unittest.TestCase):
-#
-#     layer = PLONE_FORMWIDGET_RECAPTCHA_FUNCTIONAL_TESTING
-#
-#     def setUp(self):
-#         self.portal = self.layer['portal']
-#         setRoles(self.portal, TEST_USER_ID, ['Manager'])
