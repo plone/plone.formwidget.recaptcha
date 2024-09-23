@@ -1,6 +1,5 @@
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-
 # from plone.formwidget.recaptcha.testing import PLONE_FORMWIDGET_RECAPTCHA_FUNCTIONAL_TESTING
 from plone.formwidget.recaptcha.testing import (
     PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING,
