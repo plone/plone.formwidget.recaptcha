@@ -7,7 +7,7 @@ jobs:
     strategy:
         matrix:
             plone-version: ['Plone60']
-            python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
+            python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
             include:
                 - plone-version: 'Plone52'
                   python-version: 3.8
