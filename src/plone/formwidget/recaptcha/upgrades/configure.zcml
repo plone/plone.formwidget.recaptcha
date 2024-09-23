@@ -1,0 +1,9 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="plone.formwidget.recaptcha">
+
+ <!-- -*- extra stuff goes here -*- -->
+
+  <include file="5.zcml" />
+
+</configure>
