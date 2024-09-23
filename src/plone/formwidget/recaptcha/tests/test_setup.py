@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Setup tests for this package."""
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID

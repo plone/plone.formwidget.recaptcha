@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from Acquisition import aq_inner
 from plone.formwidget.recaptcha.widget import ReCaptchaFieldWidget
 from plone.z3cform.layout import wrap_form
@@ -16,14 +15,14 @@ logger = logging.getLogger(__name__)
 
 
 class IReCaptchaForm(interface.Interface):
-    subject = schema.TextLine(title="Subject", description=u"", required=True)
+    subject = schema.TextLine(title="Subject", description="", required=True)
 
-    captcha = schema.TextLine(title="ReCaptcha", description=u"", required=False)
+    captcha = schema.TextLine(title="ReCaptcha", description="", required=False)
 
 
-class ReCaptcha(object):
-    subject = u""
-    captcha = u""
+class ReCaptcha:
+    subject = ""
+    captcha = ""
 
     def __init__(self, context):
         self.context = context
@@ -35,7 +34,7 @@ class BaseForm(form.Form):
     fields = field.Fields(IReCaptchaForm)
     fields["captcha"].widgetFactory = ReCaptchaFieldWidget
 
-    @button.buttonAndHandler(u"Save")
+    @button.buttonAndHandler("Save")
     def handleApply(self, action):
         data, errors = self.extractData()
         return

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone import api
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
 from plone.formwidget.recaptcha.norecaptcha import displayhtml, submit
@@ -19,7 +18,7 @@ class IRecaptchaInfo(Interface):
 
 @adapter(IBrowserRequest)
 @implementer(IRecaptchaInfo)
-class RecaptchaInfoAnnotation(object):
+class RecaptchaInfoAnnotation:
     def __init__(self):
         self.error = None
         self.verified = False
@@ -38,7 +37,7 @@ class RecaptchaView(BrowserView):
     def image_tag(self):
         if not self.settings.public_key:
             return """No recaptcha public key configured.
-                Go to <a href="{0}/@@recaptcha-settings" target=_blank>
+                Go to <a href="{}/@@recaptcha-settings" target=_blank>
                 Recaptcha Settings</a> to configure.""".format(
                 getSite().absolute_url()
             )

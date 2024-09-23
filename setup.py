@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Installer for the plone.formwidget.recaptcha package."""
 
 from setuptools import find_packages

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.formwidget.recaptcha.i18n import _
 from z3c.form import interfaces
 from zope import schema
@@ -9,20 +8,20 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 display_themes = SimpleVocabulary(
     [
-        SimpleTerm(value=u"light", title=_(u"light")),
-        SimpleTerm(value=u"dark", title=_(u"dark")),
+        SimpleTerm(value="light", title=_("light")),
+        SimpleTerm(value="dark", title=_("dark")),
     ]
 )
 display_types = SimpleVocabulary(
     [
-        SimpleTerm(value=u"image", title=_(u"image")),
-        SimpleTerm(value=u"audio", title=_(u"audio")),
+        SimpleTerm(value="image", title=_("image")),
+        SimpleTerm(value="audio", title=_("audio")),
     ]
 )
 display_sizes = SimpleVocabulary(
     [
-        SimpleTerm(value=u"normal", title=_(u"normal")),
-        SimpleTerm(value=u"compact", title=_(u"compact")),
+        SimpleTerm(value="normal", title=_("normal")),
+        SimpleTerm(value="compact", title=_("compact")),
     ]
 )
 
@@ -49,10 +48,10 @@ class IReCaptchaSettings(Interface):
     # - Search control panel: Show comments in search results
 
     public_key = schema.TextLine(
-        title=_("Site Key"), description=_(u""), required=True, default=u""
+        title=_("Site Key"), description=_(""), required=True, default=""
     )
 
     private_key = schema.TextLine(
-        title=_("Secret Key"), description=_(u""), required=True, default=u""
+        title=_("Secret Key"), description=_(""), required=True, default=""
     )
 

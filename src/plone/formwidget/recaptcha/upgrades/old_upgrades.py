@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.registry.interfaces import IRegistry
 from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
@@ -42,4 +41,4 @@ def to_4(context):
             resources.value.remove(res)
 
         if res in registry.records:
-            del registry.records["plone.resources/{0}".format(res)]
+            del registry.records[f"plone.resources/{res}"]

@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 # Code taken from external dependency
 # https://pypi.org/project/norecaptcha/, which is not
 # updated to Python 3
-from six.moves.urllib import parse
-from six.moves.urllib.request import Request
-from six.moves.urllib.request import urlopen
+from urllib import parse
+from urllib.request import Request
+from urllib.request import urlopen
 
 import six
 
@@ -18,13 +17,13 @@ except ImportError:
 VERIFY_SERVER = "www.google.com"
 
 
-class RecaptchaResponse(object):
+class RecaptchaResponse:
     def __init__(self, is_valid, error_code=None):
         self.is_valid = is_valid
         self.error_code = error_code
 
     def __repr__(self):
-        return "Recaptcha response: {0} {1}".format(self.is_valid, self.error_code)
+        return f"Recaptcha response: {self.is_valid} {self.error_code}"
 
     def __str__(self):
         return self.__repr__()
@@ -99,7 +98,7 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
     )
 
     request = Request(
-        url="https://{0}/recaptcha/api/siteverify".format(verify_server),
+        url=f"https://{verify_server}/recaptcha/api/siteverify",
         data=params,
         headers={
             "Content-type": "application/x-www-form-urlencoded",

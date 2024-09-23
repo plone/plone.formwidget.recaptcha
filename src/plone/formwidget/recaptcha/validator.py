@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import logging
 
 import zope.schema.interfaces
@@ -18,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class WrongCaptchaCode(ValidationError):
-    __doc__ = _(u"The code you entered was wrong, please enter the new one.")
+    __doc__ = _("The code you entered was wrong, please enter the new one.")
 
 
 
