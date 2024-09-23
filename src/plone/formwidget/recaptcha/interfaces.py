@@ -49,33 +49,10 @@ class IReCaptchaSettings(Interface):
     # - Search control panel: Show comments in search results
 
     public_key = schema.TextLine(
-        title=_(u"Public Key"), description=_(u""), required=True, default=u""
+        title=_("Site Key"), description=_(u""), required=True, default=u""
     )
 
     private_key = schema.TextLine(
-        title=_(u"Private Key"), description=_(u""), required=True, default=u""
+        title=_("Secret Key"), description=_(u""), required=True, default=u""
     )
 
-    display_theme = schema.Choice(
-        title=_(u"Theme"),
-        description=_(u"The color theme of the widget."),
-        required=True,
-        default=u"light",
-        vocabulary=display_themes,
-    )
-
-    display_type = schema.Choice(
-        title=_(u"Type"),
-        description=_(u"The type of CAPTCHA to serve."),
-        required=True,
-        default=u"image",
-        vocabulary=display_types,
-    )
-
-    display_size = schema.Choice(
-        title=_(u"Size"),
-        description=_(u"The size of the widget."),
-        required=True,
-        default=u"normal",
-        vocabulary=display_sizes,
-    )

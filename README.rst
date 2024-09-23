@@ -40,7 +40,37 @@ To actually use the service, you must obtain a site key and secret key from
 
 Usage
 -----
-See the `demo <https://github.com/plone/plone.formwidget.recaptcha/tree/master/src/plone/formwidget/recaptcha/demo>`_ folder inside the distribution for an example usage.
+
+You need to add a field to your form, adding it to your form schema, as follows::
+
+
+  from zope.interface import Interface
+  from zope import schema
+
+
+  class IYourForm(Interface):
+    ...
+    captcha = schema.TextLine(title="ReCaptcha", description=u"", required=False)
+
+
+
+You need to set IRecaptchaWidget as widget for this field, as follows::
+
+
+  from plone.formwidget.recaptcha.widget import ReCaptchaFieldWidget
+  from z3c.form import form, fields
+
+  class YourForm(form.Form):
+      fields = fields.Fields(IYourForm)
+      fields["captcha"].widgetFactory = ReCaptchaFieldWidget
+
+
+This product registers an automatic validator for all fields in all z3c.forms that use the provided widget
+so you don't need to worry about the form validation, this product will handle it for your.
+
+You can see the `demo <https://github.com/plone/plone.formwidget.recaptcha/tree/master/src/plone/formwidget/recaptcha/demo>`_ folder inside the distribution for an example usage.
+
+
 
 Supermodel
 ^^^^^^^^^^

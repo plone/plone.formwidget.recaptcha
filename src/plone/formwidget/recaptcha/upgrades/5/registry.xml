@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<registry>
+  <record remove="true" name="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.display_theme" />
+  <record remove="true" name="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.display_size" />
+  <record remove="true" name="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.display_type" />
+</registry>
+
+
+
+

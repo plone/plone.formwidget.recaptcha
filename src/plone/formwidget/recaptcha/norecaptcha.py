@@ -31,32 +31,19 @@ class RecaptchaResponse(object):
 
 
 def displayhtml(
-    site_key, language="", theme="light", fallback=False, d_type="image", size="normal"
+    site_key, language="",
 ):
     """
     Gets the HTML to display for reCAPTCHA
 
     site_key -- The site key
     language -- The language code for the widget.
-    theme -- The color theme of the widget. `light` or `dark`
-    fallback -- Old version recaptcha.
-    d_type -- The type of CAPTCHA to serve. `image` or `audio`
-    size -- The size of the dispalyed CAPTCHA, 'normal' or 'compact'
-
-    For more detail, refer to:
-      - https://developers.google.com/recaptcha/docs/display
     """
-
     return """
 <script
-  src="https://www.google.com/recaptcha/api.js?hl={LanguageCode}&fallback={Fallback}&"
+  src="https://www.google.com/recaptcha/api.js?hl={LanguageCode}"
   async="async" defer="defer"></script>
-<div class="g-recaptcha"
-    data-sitekey="{SiteKey}"
-    data-theme="{Theme}"
-    data-type="{Type}"
-    data-size="{Size}">
-</div>
+<div class="g-recaptcha" data-sitekey="{SiteKey}"></div>
 <noscript>
   <div  style="width: 302px; height: 480px;">
     <div style="width: 302px; height: 422px; position: relative;">
@@ -86,10 +73,6 @@ def displayhtml(
         **{
             "LanguageCode": language,
             "SiteKey": site_key,
-            "Theme": theme,
-            "Type": d_type,
-            "Size": size,
-            "Fallback": fallback,
         }
     )
 
@@ -106,16 +89,6 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
 
     if not (recaptcha_response_field and len(recaptcha_response_field)):
         return RecaptchaResponse(is_valid=False, error_code="incorrect-captcha-sol")
-
-    def encode_if_necessary(s):
-        if isinstance(s, six.text_type):
-            return s.encode("utf-8")
-        return s
-
-    if six.PY2:
-        secret_key = encode_if_necessary(secret_key)
-        remoteip = encode_if_necessary(remoteip)
-        recaptcha_response_field = encode_if_necessary(recaptcha_response_field)
 
     params = parse.urlencode(
         {
@@ -134,8 +107,7 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
         },
     )
 
-    if six.PY3:
-        request.data = request.data.encode("utf-8")
+    request.data = request.data.encode("utf-8")
 
     httpresp = urlopen(request)
 

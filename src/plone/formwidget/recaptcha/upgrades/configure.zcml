@@ -1,8 +1,35 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    i18n_domain="plone.formwidget.recaptcha">
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="plone.formwidget.recaptcha"
+    >
 
- <!-- -*- extra stuff goes here -*- -->
+  <!-- -*- extra stuff goes here -*- -->
+
+  <gs:upgradeStep
+      title="Install browser layer"
+      description=""
+      profile="plone.formwidget.recaptcha:default"
+      source="1"
+      destination="2"
+      handler=".old_upgrades.install_browserlayer"
+      />
+  <gs:upgradeStep
+      title="Re-Apply registry: load new controlpanel values"
+      description=""
+      profile="plone.formwidget.recaptcha:default"
+      source="2"
+      destination="3"
+      handler=".old_upgrades.reapply_registry"
+      />
+  <gs:upgradeStep
+      title="Remove obsolete JavaScript"
+      description=""
+      profile="plone.formwidget.recaptcha:default"
+      source="3"
+      destination="4"
+      handler=".old_upgrades.to_4"
+      />
 
   <include file="5.zcml" />
 
