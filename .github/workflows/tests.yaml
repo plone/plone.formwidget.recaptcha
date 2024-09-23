@@ -6,15 +6,12 @@ jobs:
   build:
     strategy:
         matrix:
-            plone-version: ['Plone52', 'Plone51', 'Plone50', 'Plone43']
-            python-version: [2.7]
+            plone-version: ['Plone60']
+            python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
             include:
                 - plone-version: 'Plone52'
-                  python-version: 3.6
-                - plone-version: 'Plone52'
-                  python-version: 3.7
-                - plone-version: 'Plone52'
                   python-version: 3.8
+
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
