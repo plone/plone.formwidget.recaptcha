@@ -31,7 +31,7 @@ class TestSetup(unittest.TestCase):
 
     def test_product_installed(self):
         """Test if plone.formwidget.recaptcha is installed."""
-        self.assertTrue(self.installer.isProductInstalled("plone.formwidget.recaptcha"))
+        self.assertTrue(self.installer.is_product_installed("plone.formwidget.recaptcha"))
 
     def test_browserlayer(self):
         """Test that IReCaptchaLayer is registered."""
@@ -53,13 +53,13 @@ class TestUninstall(unittest.TestCase):
             self.installer = plone.api.portal.get_tool("portal_quickinstaller")
         roles_before = plone.api.user.get_roles(TEST_USER_ID)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.installer.uninstallProducts(["plone.formwidget.recaptcha"])
+        self.installer.uninstall_product("plone.formwidget.recaptcha")
         setRoles(self.portal, TEST_USER_ID, roles_before)
 
     def test_product_uninstalled(self):
         """Test if plone.formwidget.recaptcha is cleanly uninstalled."""
         self.assertFalse(
-            self.installer.isProductInstalled("plone.formwidget.recaptcha")
+            self.installer.is_product_installed("plone.formwidget.recaptcha")
         )
 
     def test_browserlayer_removed(self):
