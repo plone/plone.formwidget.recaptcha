@@ -41,7 +41,7 @@ To actually use the service, you must obtain a site key and secret key from
 Usage
 -----
 
-You need to add a field to your form, adding it to your form schema, as follows::
+You need to add a field to your form adding it to your form's schema, as follows::
 
 
   from zope.interface import Interface
@@ -54,7 +54,7 @@ You need to add a field to your form, adding it to your form schema, as follows:
 
 
 
-You need to set IRecaptchaWidget as widget for this field, as follows::
+You need to set ReCaptchaWidget as widget for this field, you can do it setting ReCaptchaFieldWidget as widget factory:
 
 
   from plone.formwidget.recaptcha.widget import ReCaptchaFieldWidget
