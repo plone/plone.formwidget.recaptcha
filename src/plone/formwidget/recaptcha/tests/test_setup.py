@@ -31,7 +31,9 @@ class TestSetup(unittest.TestCase):
 
     def test_product_installed(self):
         """Test if plone.formwidget.recaptcha is installed."""
-        self.assertTrue(self.installer.is_product_installed("plone.formwidget.recaptcha"))
+        self.assertTrue(
+            self.installer.is_product_installed("plone.formwidget.recaptcha")
+        )
 
     def test_browserlayer(self):
         """Test that IReCaptchaLayer is registered."""
