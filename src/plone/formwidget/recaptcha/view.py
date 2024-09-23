@@ -1,13 +1,16 @@
 from plone import api
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
-from plone.formwidget.recaptcha.norecaptcha import displayhtml, submit
+from plone.formwidget.recaptcha.norecaptcha import displayhtml
+from plone.formwidget.recaptcha.norecaptcha import submit
 from plone.registry.interfaces import IRegistry
 from Products.Five import BrowserView
 from zope import schema
 from zope.annotation import factory
-from zope.component import adapter, queryUtility
+from zope.component import adapter
+from zope.component import queryUtility
 from zope.component.hooks import getSite
-from zope.interface import Interface, implementer
+from zope.interface import implementer
+from zope.interface import Interface
 from zope.publisher.interfaces.browser import IBrowserRequest
 
 

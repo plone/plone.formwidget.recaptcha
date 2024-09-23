@@ -1,4 +1,3 @@
-from Acquisition import aq_inner
 from plone.formwidget.recaptcha.widget import ReCaptchaFieldWidget
 from plone.z3cform.layout import wrap_form
 from z3c.form import button
@@ -6,7 +5,6 @@ from z3c.form import field
 from z3c.form import form
 from zope import interface
 from zope import schema
-from zope.component import getMultiAdapter
 
 import logging
 

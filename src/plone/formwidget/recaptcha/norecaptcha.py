@@ -5,13 +5,7 @@ from urllib import parse
 from urllib.request import Request
 from urllib.request import urlopen
 
-import six
-
-
-try:
-    import json
-except ImportError:
-    import simplejson as json
+import json
 
 
 VERIFY_SERVER = "www.google.com"
@@ -30,7 +24,8 @@ class RecaptchaResponse:
 
 
 def displayhtml(
-    site_key, language="",
+    site_key,
+    language="",
 ):
     """
     Gets the HTML to display for reCAPTCHA

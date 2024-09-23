@@ -54,4 +54,3 @@ class IReCaptchaSettings(Interface):
     private_key = schema.TextLine(
         title=_("Secret Key"), description=_(""), required=True, default=""
     )
-
