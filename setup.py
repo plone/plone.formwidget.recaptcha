@@ -53,7 +53,6 @@ setup(
     zip_safe=False,
     python_requires=">=3.8",
     install_requires=[
-        "plone.api",
         "plone.app.registry",
         "plone.app.upgrade",
         "plone.registry",
@@ -62,6 +61,7 @@ setup(
         "plone.z3cform",
         "Products.CMFCore",
         "Products.CMFPlone",
+        "plone.api",
         "z3c.form",
         "Zope",
     ],
