@@ -67,6 +67,7 @@ setup(
         "zope.publisher",
         "zope.schema",
         "Zope2",
+        "plone.api"
     ],
     extras_require={
         "test": [

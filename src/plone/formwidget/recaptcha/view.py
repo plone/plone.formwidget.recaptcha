@@ -57,7 +57,6 @@ class RecaptchaView(BrowserView):
         return None
 
     def verify(self, input=None):
-
         # Do not validate recaptcha on form inline validation.
         # This automatically makes the next request (form submit) already
         # invalid. This usually happens if the captcha is not the last field

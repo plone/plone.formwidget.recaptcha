@@ -1,1 +1,33 @@
-<tal:block tal:replace="structure context/@@recaptcha/image_tag" />
+<tal:recaptcha define="key view/public_key;
+                       widget_name view/name;">
+
+<script src="https://www.google.com/recaptcha/api.js?render=key"
+    tal:attributes="src string:https://www.google.com/recaptcha/api.js?render=${key}"></script>
+
+  <div id="g-recaptcha"
+    data-sitekey=""
+    tal:attributes="data-sitekey key"></div>
+
+  <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" value="" />
+  <input type="hidden" id="" name="" value="" tal:attributes="name widget_name; id widget_name;" />
+  <input type="hidden" name="action" id="g-recaptcha-response-action" value="submit" />
+
+  <script tal:content="string:var key = '${key}';"></script>
+  <script tal:content="string:var widget_name = '#${widget_name}';"></script>
+  <script>
+    grecaptcha.ready(function() {
+      grecaptcha.execute(key, {action: 'submit'}).then(function(token) {
+        $('#g-recaptcha-response').val(token);
+        $(widget_name).val(token);
+      });
+    });
+    setInterval(function () {
+      grecaptcha.ready(function () {
+        grecaptcha.execute(key, {action: 'submit'}).then(function(token) {
+          $('#g-recaptcha-response').val(token);
+          $(widget_name).val(token);
+        });
+      });
+    }, 90 * 1000);
+  </script>
+</tal:recaptcha>

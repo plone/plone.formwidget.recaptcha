@@ -10,24 +10,14 @@ from zope.interface import implementer_only
 import zope.component
 import zope.interface
 import zope.schema.interfaces
+from plone import api
 
 
 @implementer_only(IReCaptchaWidget)
 class ReCaptchaWidget(text.TextWidget):
-    maxlength = 7
-    size = 8
 
-    def captchaImage(self):
-        self.captcha = getMultiAdapter(
-            (aq_inner(self.context), self.request), name="captcha"
-        )
-        return self.captcha.image_tag()
-
-    def captchaAudio(self):
-        self.captcha = getMultiAdapter(
-            (aq_inner(self.context), self.request), name="captcha"
-        )
-        return self.captcha.audio_url()
+    def public_key(self):
+        return api.portal.get_registry_record('plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.public_key')
 
 
 @zope.component.adapter(zope.schema.interfaces.IField, interfaces.IFormLayer)
