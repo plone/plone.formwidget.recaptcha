@@ -13,19 +13,19 @@
   <input type="hidden" name="action" id="g-recaptcha-response-action" value="submit" />
 
   <script tal:content="string:var key = '${key}';"></script>
-  <script tal:content="string:var widget_name = '#${widget_name}';"></script>
+  <script tal:content="string:var widget_name = '${widget_name}';"></script>
   <script>
     grecaptcha.ready(function() {
       grecaptcha.execute(key, {action: 'submit'}).then(function(token) {
-        $('#g-recaptcha-response').val(token);
-        $(widget_name).val(token);
+        document.getElementById('g-recaptcha-response').value = token;
+        document.getElementById(widget_name).value = token;
       });
     });
     setInterval(function () {
       grecaptcha.ready(function () {
         grecaptcha.execute(key, {action: 'submit'}).then(function(token) {
-          $('#g-recaptcha-response').val(token);
-          $(widget_name).val(token);
+          document.getElementById('g-recaptcha-response').value = token;
+          document.getElementById(widget_name).value = token;
         });
       });
     }, 90 * 1000);
