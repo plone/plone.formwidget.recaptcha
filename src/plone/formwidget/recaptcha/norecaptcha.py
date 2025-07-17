@@ -8,31 +8,113 @@ from six.moves.urllib.request import urlopen
 
 import six
 
-
 try:
     import json
 except ImportError:
     import simplejson as json
 
-
 VERIFY_SERVER = "www.google.com"
 
 
+logger = logging.getLogger("plone.formwidget.recaptcha.norecaptcha")
+
+
 class RecaptchaResponse(object):
-    def __init__(self, is_valid, error_code=None):
+    def __init__(self, is_valid, error_code=None, score=None, action=None):
         self.is_valid = is_valid
         self.error_code = error_code
+        self.score = score
+        self.action = action
 
     def __repr__(self):
-        return "Recaptcha response: {0} {1}".format(self.is_valid, self.error_code)
+        return "Recaptcha response: {0} {1} score={2} action={3}".format(
+            self.is_valid, self.error_code, self.score, self.action
+        )
 
     def __str__(self):
         return self.__repr__()
 
 
-def displayhtml(
-    site_key, language="", theme="light", fallback=False, d_type="image", size="normal"
-):
+def _make_verification_request(data, verify_server=VERIFY_SERVER):
+    """
+    Common function to make verification requests to Google's reCAPTCHA API.
+    """
+    params = parse.urlencode(data)
+    request = Request(
+        url="https://{0}/recaptcha/api/siteverify".format(verify_server),
+        data=params,
+        headers={
+            "Content-type": "application/x-www-form-urlencoded",
+            "User-agent": "noReCAPTCHA Python",
+        },
+    )
+    if six.PY3:
+        request.data = request.data.encode("utf-8")
+
+    httpresp = urlopen(request)
+    return_values = json.loads(httpresp.read())
+    httpresp.close()
+
+    return return_values
+
+
+def displayhtml_v3(site_key, action="homepage"):
+    """
+    Returns HTML/JS for reCAPTCHA v3 integration.
+    site_key -- The site key
+    action -- The action name for v3 (e.g., 'homepage', 'login', etc.)
+    """
+    return '''
+<script src="https://www.google.com/recaptcha/api.js?render={SiteKey}"></script>
+<script>
+grecaptcha.ready(function() {{
+    grecaptcha.execute('{SiteKey}', {{action: '{Action}'}}).then(function(token) {{
+        var recaptchaResponse = document.getElementById('g-recaptcha-response');
+        if (recaptchaResponse) {{
+            recaptchaResponse.value = token;
+        }}
+    }});
+}});
+</script>
+<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+'''.format(SiteKey=site_key, Action=action)
+
+
+def submit_v3(recaptcha_response_field, secret_key, remoteip=None, action=None, min_score=0.5, verify_server=VERIFY_SERVER):
+    """
+    Verifies reCAPTCHA v3 token.
+    recaptcha_response_field -- The token from the client
+    secret_key -- your reCAPTCHA secret key
+    remoteip -- the user's ip address (optional)
+    action -- expected action name (optional)
+    min_score -- minimum score to consider valid (default 0.5)
+    """
+    if not (recaptcha_response_field and len(recaptcha_response_field)):
+        return RecaptchaResponse(is_valid=False, error_code="missing-input-response")
+
+    data = {
+        "secret": secret_key,
+        "response": recaptcha_response_field,
+    }
+    if remoteip:
+        data["remoteip"] = remoteip
+
+    return_values = _make_verification_request(data, verify_server)
+
+    success = return_values.get("success", False)
+    score = return_values.get("score")
+    returned_action = return_values.get("action")
+    error_codes = return_values.get("error-codes", [])
+
+    is_valid = success and (score is not None and score >= min_score)
+    if action and returned_action != action:
+        is_valid = False
+        error_codes.append("action-mismatch")
+
+    return RecaptchaResponse(is_valid=is_valid, error_code=error_codes, score=score, action=returned_action)
+
+
+def displayhtml(site_key, language="", theme="light", fallback=False, d_type="image", size="normal"):
     """
     Gets the HTML to display for reCAPTCHA
 
@@ -46,7 +128,6 @@ def displayhtml(
     For more detail, refer to:
       - https://developers.google.com/recaptcha/docs/display
     """
-
     return """
 <script
   src="https://www.google.com/recaptcha/api.js?hl={LanguageCode}&fallback={Fallback}&"
@@ -83,14 +164,12 @@ def displayhtml(
   </div>
 </noscript>
 """.format(
-        **{
-            "LanguageCode": language,
-            "SiteKey": site_key,
-            "Theme": theme,
-            "Type": d_type,
-            "Size": size,
-            "Fallback": fallback,
-        }
+        LanguageCode=language,
+        SiteKey=site_key,
+        Theme=theme,
+        Type=d_type,
+        Size=size,
+        Fallback=fallback,
     )
 
 
@@ -103,7 +182,6 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
     secret_key -- your reCAPTCHA secret key
     remoteip -- the user's ip address
     """
-
     if not (recaptcha_response_field and len(recaptcha_response_field)):
         return RecaptchaResponse(is_valid=False, error_code="incorrect-captcha-sol")
 
@@ -115,32 +193,16 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
     if six.PY2:
         secret_key = encode_if_necessary(secret_key)
         remoteip = encode_if_necessary(remoteip)
-        recaptcha_response_field = encode_if_necessary(recaptcha_response_field)
+        recaptcha_response_field = encode_if_necessary(
+            recaptcha_response_field)
 
-    params = parse.urlencode(
-        {
-            "secret": secret_key,
-            "remoteip": remoteip,
-            "response": recaptcha_response_field,
-        }
-    )
+    data = {
+        "secret": secret_key,
+        "remoteip": remoteip,
+        "response": recaptcha_response_field,
+    }
 
-    request = Request(
-        url="https://{0}/recaptcha/api/siteverify".format(verify_server),
-        data=params,
-        headers={
-            "Content-type": "application/x-www-form-urlencoded",
-            "User-agent": "noReCAPTCHA Python",
-        },
-    )
-
-    if six.PY3:
-        request.data = request.data.encode("utf-8")
-
-    httpresp = urlopen(request)
-
-    return_values = json.loads(httpresp.read())
-    httpresp.close()
+    return_values = _make_verification_request(data, verify_server)
 
     return_code = return_values["success"]
     error_codes = return_values.get("error-codes", [])
