@@ -2,6 +2,7 @@
 # Code taken from external dependency
 # https://pypi.org/project/norecaptcha/, which is not
 # updated to Python 3
+import logging
 from six.moves.urllib import parse
 from six.moves.urllib.request import Request
 from six.moves.urllib.request import urlopen
@@ -36,8 +37,14 @@ class RecaptchaResponse(object):
 
 
 def _make_verification_request(data, verify_server=VERIFY_SERVER):
-    """
-    Common function to make verification requests to Google's reCAPTCHA API.
+    """Make verification request to Google's reCAPTCHA API.
+    
+    :param data: Form data to send to the verification server.
+    :type data: dict
+    :param verify_server: Hostname of the verification server.
+    :type verify_server: str
+    :returns: Response from the verification server.
+    :rtype: dict
     """
     params = parse.urlencode(data)
     request = Request(
@@ -60,9 +67,14 @@ def _make_verification_request(data, verify_server=VERIFY_SERVER):
 
 def displayhtml_v3(site_key, action="homepage"):
     """
-    Returns HTML/JS for reCAPTCHA v3 integration.
-    site_key -- The site key
-    action -- The action name for v3 (e.g., 'homepage', 'login', etc.)
+    Return HTML/JS for reCAPTCHA v3 integration.
+
+    :param site_key: The site key for reCAPTCHA v3.
+    :type site_key: str
+    :param action: The action name for v3 (e.g., 'homepage', 'login', etc.).
+    :type action: str
+    :returns: HTML and JavaScript snippet for embedding reCAPTCHA v3.
+    :rtype: str
     """
     return '''
 <script src="https://www.google.com/recaptcha/api.js?render={SiteKey}"></script>
@@ -81,13 +93,22 @@ grecaptcha.ready(function() {{
 
 
 def submit_v3(recaptcha_response_field, secret_key, remoteip=None, action=None, min_score=0.5, verify_server=VERIFY_SERVER):
-    """
-    Verifies reCAPTCHA v3 token.
-    recaptcha_response_field -- The token from the client
-    secret_key -- your reCAPTCHA secret key
-    remoteip -- the user's ip address (optional)
-    action -- expected action name (optional)
-    min_score -- minimum score to consider valid (default 0.5)
+    """Verify reCAPTCHA v3 token.
+    
+    :param recaptcha_response_field: The token from the client.
+    :type recaptcha_response_field: str
+    :param secret_key: Your reCAPTCHA secret key.
+    :type secret_key: str
+    :param remoteip: The user's IP address (optional).
+    :type remoteip: str or None
+    :param action: Expected action name (optional).
+    :type action: str or None
+    :param min_score: Minimum score to consider valid.
+    :type min_score: float
+    :param verify_server: Hostname of the verification server.
+    :type verify_server: str
+    :returns: Response object containing validation results.
+    :rtype: RecaptchaResponse
     """
     if not (recaptcha_response_field and len(recaptcha_response_field)):
         return RecaptchaResponse(is_valid=False, error_code="missing-input-response")
@@ -115,16 +136,23 @@ def submit_v3(recaptcha_response_field, secret_key, remoteip=None, action=None, 
 
 
 def displayhtml(site_key, language="", theme="light", fallback=False, d_type="image", size="normal"):
-    """
-    Gets the HTML to display for reCAPTCHA
+    """Get HTML to display for reCAPTCHA v2.
 
-    site_key -- The site key
-    language -- The language code for the widget.
-    theme -- The color theme of the widget. `light` or `dark`
-    fallback -- Old version recaptcha.
-    d_type -- The type of CAPTCHA to serve. `image` or `audio`
-    size -- The size of the dispalyed CAPTCHA, 'normal' or 'compact'
-
+    :param site_key: The site key.
+    :type site_key: str
+    :param language: The language code for the widget.
+    :type language: str
+    :param theme: The color theme of the widget ('light' or 'dark').
+    :type theme: str
+    :param fallback: Old version recaptcha.
+    :type fallback: bool
+    :param d_type: The type of CAPTCHA to serve ('image' or 'audio').
+    :type d_type: str
+    :param size: The size of the displayed CAPTCHA ('normal' or 'compact').
+    :type size: str
+    :returns: HTML snippet for embedding reCAPTCHA v2.
+    :rtype: str
+    
     For more detail, refer to:
       - https://developers.google.com/recaptcha/docs/display
     """
@@ -174,13 +202,18 @@ def displayhtml(site_key, language="", theme="light", fallback=False, d_type="im
 
 
 def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_SERVER):
-    """
-    Submits a reCAPTCHA request for verification. Returns RecaptchaResponse
-    for the request
+    """Submit a reCAPTCHA v2 request for verification.
 
-    recaptcha_response_field -- The value from the form
-    secret_key -- your reCAPTCHA secret key
-    remoteip -- the user's ip address
+    :param recaptcha_response_field: The value from the form.
+    :type recaptcha_response_field: str
+    :param secret_key: Your reCAPTCHA secret key.
+    :type secret_key: str
+    :param remoteip: The user's IP address.
+    :type remoteip: str
+    :param verify_server: Hostname of the verification server.
+    :type verify_server: str
+    :returns: Response object containing validation results.
+    :rtype: RecaptchaResponse
     """
     if not (recaptcha_response_field and len(recaptcha_response_field)):
         return RecaptchaResponse(is_valid=False, error_code="incorrect-captcha-sol")
