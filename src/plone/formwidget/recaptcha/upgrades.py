@@ -43,3 +43,10 @@ def to_4(context):
 
         if res in registry.records:
             del registry.records["plone.resources/{0}".format(res)]
+
+
+def to_5(context):
+    from logging import getLogger
+
+    log = getLogger(__name__)
+    log.info("Upgrading to 5")

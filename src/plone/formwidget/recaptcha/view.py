@@ -61,7 +61,7 @@ class RecaptchaView(BrowserView):
         # This automatically makes the next request (form submit) already
         # invalid. This usually happens if the captcha is not the last field
         # on a form.
-        if self.request.URL.endswith('z3cform_validate_field'):
+        if self.request.URL.endswith("z3cform_validate_field"):
             return
 
         info = IRecaptchaInfo(self.request)
@@ -77,12 +77,21 @@ class RecaptchaView(BrowserView):
         remote_addr = self.request.get("HTTP_X_FORWARDED_FOR", "").split(",")[0]
         if not remote_addr:
             remote_addr = self.request.get("REMOTE_ADDR")
+
         res = submit(response_field, self.settings.private_key, remote_addr)
         if res.error_code:
             info.error = res.error_code
 
         info.verified = res.is_valid
-        return res.is_valid
+
+        if res.is_valid:
+            # The request is valid, now check the score
+            recaptcha_score = res.all_values.get("score")
+            # Allow scores larger than the set
+            if recaptcha_score >= self.settings.v3_score_threshold:
+                return True
+
+        return False
 
     @property
     def external(self):

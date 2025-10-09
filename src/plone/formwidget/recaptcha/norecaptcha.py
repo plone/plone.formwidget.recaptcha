@@ -19,9 +19,10 @@ VERIFY_SERVER = "www.google.com"
 
 
 class RecaptchaResponse(object):
-    def __init__(self, is_valid, error_code=None):
+    def __init__(self, is_valid, error_code=None, **kwargs):
         self.is_valid = is_valid
         self.error_code = error_code
+        self.all_values = kwargs
 
     def __repr__(self):
         return "Recaptcha response: {0} {1}".format(self.is_valid, self.error_code)
@@ -144,8 +145,11 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
 
     return_code = return_values["success"]
     error_codes = return_values.get("error-codes", [])
+    all_return_values = return_values
 
     if return_code:
-        return RecaptchaResponse(is_valid=True)
+        return RecaptchaResponse(is_valid=True, **all_return_values)
     else:
-        return RecaptchaResponse(is_valid=False, error_code=error_codes)
+        return RecaptchaResponse(
+            is_valid=False, error_code=error_codes, **all_return_values
+        )

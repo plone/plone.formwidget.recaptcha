@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<registry>
+
+  <record name="plone.formwidget.recaptcha.interfaces.IReCaptchaSettings.v3_score_threshold">
+    <field type="plone.registry.field.Float">
+      <title>Score threshold</title>
+      <description>reCAPTCHA v3 returns a score (1.0 is very likely a good interaction, 0.0 is very likely a bot). Enter here the value below which the values will be considered spam.</description>
+    </field>
+    <value>0.5</value>
+  </record>
+</registry>

@@ -9,20 +9,20 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 display_themes = SimpleVocabulary(
     [
-        SimpleTerm(value=u"light", title=_(u"light")),
-        SimpleTerm(value=u"dark", title=_(u"dark")),
+        SimpleTerm(value="light", title=_("light")),
+        SimpleTerm(value="dark", title=_("dark")),
     ]
 )
 display_types = SimpleVocabulary(
     [
-        SimpleTerm(value=u"image", title=_(u"image")),
-        SimpleTerm(value=u"audio", title=_(u"audio")),
+        SimpleTerm(value="image", title=_("image")),
+        SimpleTerm(value="audio", title=_("audio")),
     ]
 )
 display_sizes = SimpleVocabulary(
     [
-        SimpleTerm(value=u"normal", title=_(u"normal")),
-        SimpleTerm(value=u"compact", title=_(u"compact")),
+        SimpleTerm(value="normal", title=_("normal")),
+        SimpleTerm(value="compact", title=_("compact")),
     ]
 )
 
@@ -49,33 +49,22 @@ class IReCaptchaSettings(Interface):
     # - Search control panel: Show comments in search results
 
     public_key = schema.TextLine(
-        title=_(u"Public Key"), description=_(u""), required=True, default=u""
+        title=_("Public Key"), description=_(""), required=True, default=""
     )
 
     private_key = schema.TextLine(
-        title=_(u"Private Key"), description=_(u""), required=True, default=u""
+        title=_("Private Key"), description=_(""), required=True, default=""
     )
 
-    display_theme = schema.Choice(
-        title=_(u"Theme"),
-        description=_(u"The color theme of the widget."),
+    v3_score_threshold = schema.Float(
+        title=_(
+            "Score threshold",
+        ),
+        description=_(
+            "reCAPTCHA v3 returns a score (1.0 is very likely a good interaction, 0.0 is very likely a bot)"
+            "Enter here the value below which the values will be considered spam.",
+        ),
+        default=0.5,
         required=True,
-        default=u"light",
-        vocabulary=display_themes,
-    )
-
-    display_type = schema.Choice(
-        title=_(u"Type"),
-        description=_(u"The type of CAPTCHA to serve."),
-        required=True,
-        default=u"image",
-        vocabulary=display_types,
-    )
-
-    display_size = schema.Choice(
-        title=_(u"Size"),
-        description=_(u"The size of the widget."),
-        required=True,
-        default=u"normal",
-        vocabulary=display_sizes,
+        readonly=False,
     )
