@@ -85,10 +85,12 @@ class IReCaptchaSettings(Interface):
         description=_(u"Select the reCAPTCHA API version to use (v2 or v3)."),
         required=True,
         default=u"v2",
-        vocabulary=SimpleVocabulary([
-            SimpleTerm(value=u"v2", title=_(u"v2")),
-            SimpleTerm(value=u"v3", title=_(u"v3")),
-        ]),
+        vocabulary=SimpleVocabulary(
+            [
+                SimpleTerm(value=u"v2", title=_(u"v2")),
+                SimpleTerm(value=u"v3", title=_(u"v3")),
+            ]
+        ),
     )
 
     v3_score_threshold = schema.Float(

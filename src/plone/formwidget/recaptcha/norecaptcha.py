@@ -40,7 +40,7 @@ class RecaptchaResponse(object):
 
 def _make_verification_request(data, verify_server=VERIFY_SERVER):
     """Make verification request to Google's reCAPTCHA API.
-    
+
     :param data: Form data to send to the verification server.
     :type data: dict
     :param verify_server: Hostname of the verification server.
@@ -78,7 +78,7 @@ def displayhtml_v3(site_key, action="homepage"):
     :returns: HTML and JavaScript snippet for embedding reCAPTCHA v3.
     :rtype: str
     """
-    return '''
+    return """
 <script src="https://www.google.com/recaptcha/api.js?render={SiteKey}"></script>
 <script>
 grecaptcha.ready(function() {{
@@ -91,12 +91,21 @@ grecaptcha.ready(function() {{
 }});
 </script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-'''.format(SiteKey=site_key, Action=action)
+""".format(
+        SiteKey=site_key, Action=action
+    )
 
 
-def submit_v3(recaptcha_response_field, secret_key, remoteip=None, action=None, min_score=0.5, verify_server=VERIFY_SERVER):
+def submit_v3(
+    recaptcha_response_field,
+    secret_key,
+    remoteip=None,
+    action=None,
+    min_score=0.5,
+    verify_server=VERIFY_SERVER,
+):
     """Verify reCAPTCHA v3 token.
-    
+
     :param recaptcha_response_field: The token from the client.
     :type recaptcha_response_field: str
     :param secret_key: Your reCAPTCHA secret key.
@@ -137,7 +146,9 @@ def submit_v3(recaptcha_response_field, secret_key, remoteip=None, action=None, 
     return RecaptchaResponse(is_valid=is_valid, error_code=error_codes, **return_values)
 
 
-def displayhtml(site_key, language="", theme="light", fallback=False, d_type="image", size="normal"):
+def displayhtml(
+    site_key, language="", theme="light", fallback=False, d_type="image", size="normal"
+):
     """Get HTML to display for reCAPTCHA v2.
 
     :param site_key: The site key.
@@ -154,7 +165,7 @@ def displayhtml(site_key, language="", theme="light", fallback=False, d_type="im
     :type size: str
     :returns: HTML snippet for embedding reCAPTCHA v2.
     :rtype: str
-    
+
     For more detail, refer to:
       - https://developers.google.com/recaptcha/docs/display
     """
@@ -228,8 +239,7 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
     if six.PY2:
         secret_key = encode_if_necessary(secret_key)
         remoteip = encode_if_necessary(remoteip)
-        recaptcha_response_field = encode_if_necessary(
-            recaptcha_response_field)
+        recaptcha_response_field = encode_if_necessary(recaptcha_response_field)
 
     data = {
         "secret": secret_key,

@@ -42,7 +42,7 @@ class RecaptchaView(BrowserView):
 
         # Common error message template
         def get_config_error_message(version_suffix=""):
-            return "No recaptcha{0} public key configured. Go to <a href=\"{1}/@@recaptcha-settings\" target=_blank>Recaptcha Settings</a> to configure.".format(
+            return 'No recaptcha{0} public key configured. Go to <a href="{1}/@@recaptcha-settings" target=_blank>Recaptcha Settings</a> to configure.'.format(
                 version_suffix, getSite().absolute_url()
             )
 
@@ -75,7 +75,7 @@ class RecaptchaView(BrowserView):
         # This automatically makes the next request (form submit) already
         # invalid. This usually happens if the captcha is not the last field
         # on a form.
-        if self.request.URL.endswith('z3cform_validate_field'):
+        if self.request.URL.endswith("z3cform_validate_field"):
             return
 
         info = IRecaptchaInfo(self.request)
@@ -88,16 +88,19 @@ class RecaptchaView(BrowserView):
                 "path/to/site/@@recaptcha-settings to configure."
             )
         response_field = self.request.get("g-recaptcha-response")
-        remote_addr = self.request.get(
-            "HTTP_X_FORWARDED_FOR", "").split(",")[0]
+        remote_addr = self.request.get("HTTP_X_FORWARDED_FOR", "").split(",")[0]
         if not remote_addr:
             remote_addr = self.request.get("REMOTE_ADDR")
-        res = submit(response_field, self.settings.private_key, remote_addr) if self.api_version == "v2" else submit_v3(
-            response_field,
-            self.settings.private_key,
-            remoteip=remote_addr,
-            action=self.request.get("recaptcha_action", "homepage"),
-            min_score=self.settings.v3_score_threshold,
+        res = (
+            submit(response_field, self.settings.private_key, remote_addr)
+            if self.api_version == "v2"
+            else submit_v3(
+                response_field,
+                self.settings.private_key,
+                remoteip=remote_addr,
+                action=self.request.get("recaptcha_action", "homepage"),
+                min_score=self.settings.v3_score_threshold,
+            )
         )
         if res.error_code:
             info.error = res.error_code
