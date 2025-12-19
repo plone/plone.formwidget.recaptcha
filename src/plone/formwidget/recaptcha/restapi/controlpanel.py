@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.formwidget.recaptcha.i18n import _
 from plone.formwidget.recaptcha.interfaces import IReCaptchaLayer
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings

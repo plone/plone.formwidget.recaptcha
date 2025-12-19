@@ -1,19 +1,13 @@
-# -*- coding: utf-8 -*-
 # Code taken from external dependency
 # https://pypi.org/project/norecaptcha/, which is not
 # updated to Python 3
-from six.moves.urllib import parse
-from six.moves.urllib.request import Request
-from six.moves.urllib.request import urlopen
+from urllib import parse
+from urllib.request import Request
+from urllib.request import urlopen
 
+import json
 import logging
-import six
 
-
-try:
-    import json
-except ImportError:
-    import simplejson as json
 
 VERIFY_SERVER = "www.google.com"
 
@@ -21,14 +15,14 @@ VERIFY_SERVER = "www.google.com"
 logger = logging.getLogger("plone.formwidget.recaptcha.norecaptcha")
 
 
-class RecaptchaResponse(object):
+class RecaptchaResponse:
     def __init__(self, is_valid, error_code=None, **kwargs):
         self.is_valid = is_valid
         self.error_code = error_code
         self.kwargs = kwargs
 
     def __repr__(self):
-        return "Recaptcha response: {0} {1} score={2} action={3}".format(
+        return "Recaptcha response: {} {} score={} action={}".format(
             self.is_valid,
             self.error_code,
             self.kwargs.get("score"),
@@ -51,15 +45,14 @@ def _make_verification_request(data, verify_server=VERIFY_SERVER):
     """
     params = parse.urlencode(data)
     request = Request(
-        url="https://{0}/recaptcha/api/siteverify".format(verify_server),
+        url=f"https://{verify_server}/recaptcha/api/siteverify",
         data=params,
         headers={
             "Content-type": "application/x-www-form-urlencoded",
             "User-agent": "noReCAPTCHA Python",
         },
     )
-    if six.PY3:
-        request.data = request.data.encode("utf-8")
+    request.data = request.data.encode("utf-8")
 
     httpresp = urlopen(request)
     return_values = json.loads(httpresp.read())
@@ -233,14 +226,9 @@ def submit(recaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_
         return RecaptchaResponse(is_valid=False, error_code="incorrect-captcha-sol")
 
     def encode_if_necessary(s):
-        if isinstance(s, six.text_type):
+        if isinstance(s, str):
             return s.encode("utf-8")
         return s
-
-    if six.PY2:
-        secret_key = encode_if_necessary(secret_key)
-        remoteip = encode_if_necessary(remoteip)
-        recaptcha_response_field = encode_if_necessary(recaptcha_response_field)
 
     data = {
         "secret": secret_key,
