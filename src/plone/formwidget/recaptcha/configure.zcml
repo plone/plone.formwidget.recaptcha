@@ -46,6 +46,16 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       directory="profiles/uninstall"
       />
+
+  <gs:registerProfile
+      name="5"
+      title="Upgrade profile"
+      description="Upgrade profile to add new fields."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      directory="profiles/to_5"
+      />
+
   <gs:upgradeStep
       title="Install browser layer"
       description=""
@@ -70,6 +80,17 @@
       profile="plone.formwidget.recaptcha:default"
       source="3"
       />
+  <gs:upgradeSteps
+      profile="plone.formwidget.recaptcha:default"
+      source="4"
+      destination="5"
+      >
+    <gs:upgradeDepends
+        title="New fields in the control panel (GS profile)"
+        description="Those new fields allow configuring the v3 recaptcha"
+        import_profile="plone.formwidget.recaptcha:5"
+        />
+  </gs:upgradeSteps>
 
   <!-- Control panel -->
   <browser:page
