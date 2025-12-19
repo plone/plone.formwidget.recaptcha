@@ -91,20 +91,6 @@ class IReCaptchaSettings(Interface):
         ]),
     )
 
-    public_key_v3 = schema.TextLine(
-        title=_(u"Public Key (v3)"),
-        description=_(u"Google reCAPTCHA v3 site key."),
-        required=False,
-        default=u"",
-    )
-
-    private_key_v3 = schema.TextLine(
-        title=_(u"Private Key (v3)"),
-        description=_(u"Google reCAPTCHA v3 secret key."),
-        required=False,
-        default=u"",
-    )
-
     v3_score_threshold = schema.Float(
         title=_(u"Score Threshold (v3)"),
         description=_(u"Minimum score for v3 validation (0.0 - 1.0). Recommended: 0.5"),

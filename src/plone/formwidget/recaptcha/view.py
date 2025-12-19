@@ -47,11 +47,11 @@ class RecaptchaView(BrowserView):
             )
 
         if self.api_version == "v3":
-            if not self.settings.public_key_v3:
+            if not self.settings.public_key:
                 return get_config_error_message(" v3")
 
             action = self.request.get("recaptcha_action", "homepage")
-            return displayhtml_v3(self.settings.public_key_v3, action=action)
+            return displayhtml_v3(self.settings.public_key, action=action)
 
         else:
             if not self.settings.public_key:
@@ -94,7 +94,7 @@ class RecaptchaView(BrowserView):
             remote_addr = self.request.get("REMOTE_ADDR")
         res = submit(response_field, self.settings.private_key, remote_addr) if self.api_version == "v2" else submit_v3(
             response_field,
-            self.settings.private_key_v3,
+            self.settings.private_key,
             remoteip=remote_addr,
             action=self.request.get("recaptcha_action", "homepage"),
             min_score=self.settings.v3_score_threshold,
