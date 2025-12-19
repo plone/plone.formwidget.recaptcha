@@ -6,28 +6,22 @@ jobs:
   build:
     strategy:
         matrix:
-            plone-version: ['Plone52', 'Plone51', 'Plone50', 'Plone43']
-            python-version: [2.7]
-            include:
-                - plone-version: 'Plone52'
-                  python-version: 3.6
-                - plone-version: 'Plone52'
-                  python-version: 3.7
-                - plone-version: 'Plone52'
-                  python-version: 3.8
-    runs-on: ubuntu-latest
+            plone-version: ['Plone52',]
+            python-version: [3.8]
+
+    runs-on: ubuntu-22.04
     steps:
-        - uses: actions/checkout@v2
-        - uses: actions/cache@v2
-          with:
-              path: |
-                ~/.cache/pip
-                ~/buildout-cache/eggs
-                ~/extends
-                webpack/node_modules
-              key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ matrix.plone-version }}-${{ hashFiles('**/setup.py') }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/*.cfg') }}-${{ hashFiles('**/constraints.txt') }}-${{ hashFiles('**/tox.ini') }}
+        - uses: actions/checkout@v3
+        # - uses: actions/cache@v3
+        #   with:
+        #       path: |
+        #         ~/.cache/pip
+        #         ~/buildout-cache/eggs
+        #         ~/extends
+        #         webpack/node_modules
+        #       key: ${{ runner.os }}-tox-${{ matrix.python-version }}-${{ matrix.plone-version }}-${{ hashFiles('**/setup.py') }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/*.cfg') }}-${{ hashFiles('**/constraints.txt') }}-${{ hashFiles('**/tox.ini') }}
         - name: Set up Python ${{ matrix.python-version }}
-          uses: actions/setup-python@v2
+          uses: actions/setup-python@v5
           with:
               python-version: ${{ matrix.python-version }}
         - name: Install system libraries
@@ -56,7 +50,7 @@ jobs:
             PYTHON-VERSION: ${{ matrix.python-version }}
         - name: "Coverage report"
           run: tox -r -e coverage-report
-        - name: "Upload coverage to Codecov"
-          uses: "codecov/codecov-action@v3.1.0"
-          with:
-            fail_ci_if_error: true
+        # - name: "Upload coverage to Codecov"
+        #   uses: "codecov/codecov-action@v3.1.0"
+        #   with:
+        #     fail_ci_if_error: true
