@@ -53,6 +53,7 @@ setup(
     install_requires=[
         "Acquisition",
         "plone.app.registry",
+        "plone.base",
         "plone.registry",
         "plone.restapi",
         "plone.supermodel",
