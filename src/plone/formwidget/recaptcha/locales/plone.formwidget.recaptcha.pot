@@ -1,10 +1,10 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-06-11 17:18+0000\n"
+"POT-Creation-Date: 2025-12-19 22:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,27 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone.formwidget.recaptcha\n"
 
-#: ../interfaces.py:52
+#: ../interfaces.py:51
 msgid ""
 msgstr ""
 
-#: ../controlpanel.py:11
+#: ../interfaces.py:83
+msgid "API Version"
+msgstr ""
+
+#: ../controlpanel.py:10
 msgid "In order to use ReCaptcha v2 on your Plone site, go to https://developers.google.com/recaptcha/ to create an account and to receive your private and public key. Then configure them at https://host/path/to/site/@@recaptcha-settings. If you don't want to rely on an external service for captcha, you might want to consider using plone.formwidget.captcha instead."
 msgstr ""
 
-#: ../interfaces.py:56
+#: ../interfaces.py:97
+msgid "Minimum score for v3 validation (0.0 - 1.0). Recommended: 0.5"
+msgstr ""
+
+#: ../interfaces.py:55
 msgid "Private Key"
 msgstr ""
 
-#: ../interfaces.py:52
+#: ../interfaces.py:51
 msgid "Public Key"
 msgstr ""
 
@@ -41,58 +49,74 @@ msgstr ""
 msgid "ReCaptcha Control Panel"
 msgstr ""
 
-#: ../controlpanel.py:10
+#: ../controlpanel.py:9
 msgid "ReCaptcha v2 settings"
 msgstr ""
 
-#: ../interfaces.py:76
+#: ../interfaces.py:96
+msgid "Score Threshold (v3)"
+msgstr ""
+
+#: ../interfaces.py:84
+msgid "Select the reCAPTCHA API version to use (v2 or v3)."
+msgstr ""
+
+#: ../interfaces.py:75
 msgid "Size"
 msgstr ""
 
-#: ../validator.py:10
+#: ../validator.py:9
 msgid "The code you entered was wrong, please enter the new one."
 msgstr ""
 
-#: ../interfaces.py:61
+#: ../interfaces.py:60
 msgid "The color theme of the widget."
 msgstr ""
 
-#: ../interfaces.py:77
+#: ../interfaces.py:76
 msgid "The size of the widget."
 msgstr ""
 
-#: ../interfaces.py:69
+#: ../interfaces.py:68
 msgid "The type of CAPTCHA to serve."
 msgstr ""
 
-#: ../interfaces.py:60
+#: ../interfaces.py:59
 msgid "Theme"
 msgstr ""
 
-#: ../interfaces.py:68
+#: ../interfaces.py:67
 msgid "Type"
 msgstr ""
 
-#: ../interfaces.py:19
+#: ../interfaces.py:18
 msgid "audio"
 msgstr ""
 
-#: ../interfaces.py:25
+#: ../interfaces.py:24
 msgid "compact"
 msgstr ""
 
-#: ../interfaces.py:13
+#: ../interfaces.py:12
 msgid "dark"
 msgstr ""
 
-#: ../interfaces.py:18
+#: ../interfaces.py:17
 msgid "image"
 msgstr ""
 
-#: ../interfaces.py:12
+#: ../interfaces.py:11
 msgid "light"
 msgstr ""
 
-#: ../interfaces.py:24
+#: ../interfaces.py:23
 msgid "normal"
+msgstr ""
+
+#: ../interfaces.py:89
+msgid "v2"
+msgstr ""
+
+#: ../interfaces.py:90
+msgid "v3"
 msgstr ""
