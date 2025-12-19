@@ -21,15 +21,17 @@ logger = logging.getLogger("plone.formwidget.recaptcha.norecaptcha")
 
 
 class RecaptchaResponse(object):
-    def __init__(self, is_valid, error_code=None, score=None, action=None):
+    def __init__(self, is_valid, error_code=None, **kwargs):
         self.is_valid = is_valid
         self.error_code = error_code
-        self.score = score
-        self.action = action
+        self.kwargs = kwargs
 
     def __repr__(self):
         return "Recaptcha response: {0} {1} score={2} action={3}".format(
-            self.is_valid, self.error_code, self.score, self.action
+            self.is_valid,
+            self.error_code,
+            self.kwargs.get("score"),
+            self.kwargs.get("action"),
         )
 
     def __str__(self):
@@ -132,7 +134,7 @@ def submit_v3(recaptcha_response_field, secret_key, remoteip=None, action=None, 
         is_valid = False
         error_codes.append("action-mismatch")
 
-    return RecaptchaResponse(is_valid=is_valid, error_code=error_codes, score=score, action=returned_action)
+    return RecaptchaResponse(is_valid=is_valid, error_code=error_codes, **return_values)
 
 
 def displayhtml(site_key, language="", theme="light", fallback=False, d_type="image", size="normal"):
