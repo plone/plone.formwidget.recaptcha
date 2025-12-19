@@ -2,14 +2,13 @@
 
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from plone.base.utils import get_installer
 from plone.formwidget.recaptcha.testing import (
     PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING,
 )
 
 import plone.api
 import unittest
-
-from plone.base.utils import get_installer
 
 
 class TestSetup(unittest.TestCase):
