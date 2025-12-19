@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
-from plone.formwidget.recaptcha.norecaptcha import displayhtml, displayhtml_v3
-from plone.formwidget.recaptcha.norecaptcha import submit, submit_v3
+from plone.formwidget.recaptcha.norecaptcha import displayhtml
+from plone.formwidget.recaptcha.norecaptcha import displayhtml_v3
+from plone.formwidget.recaptcha.norecaptcha import submit
+from plone.formwidget.recaptcha.norecaptcha import submit_v3
 from plone.registry.interfaces import IRegistry
 from Products.Five import BrowserView
 from zope import schema

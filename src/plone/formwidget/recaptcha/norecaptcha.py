@@ -2,12 +2,13 @@
 # Code taken from external dependency
 # https://pypi.org/project/norecaptcha/, which is not
 # updated to Python 3
-import logging
 from six.moves.urllib import parse
 from six.moves.urllib.request import Request
 from six.moves.urllib.request import urlopen
 
+import logging
 import six
+
 
 try:
     import json
