@@ -73,7 +73,12 @@ setup(
         "Zope",
     ],
     extras_require={
-        "test": ["plone.api", "plone.app.testing", "plone.browserlayer"],
+        "test": [
+            "plone.api",
+            "plone.app.testing",
+            "plone.browserlayer",
+            "plone.testing",
+        ],
     },
     entry_points="""
     [z3c.autoinclude.plugin]
