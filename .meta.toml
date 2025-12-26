@@ -11,3 +11,6 @@ test_matrix = { "6.0" = ["*"], "6.1" = ["*"] }
 
 [github]
 py_versions = "[\"3.10\",\"3.11\",\"3.12\"]"
+
+[pyproject]
+dependencies_ignores = "['plone.api', 'Products.CMFPlone']"
