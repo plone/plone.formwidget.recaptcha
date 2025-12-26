@@ -3,4 +3,11 @@
 # See the inline comments on how to expand/tweak this configuration file
 [meta]
 template = "default"
-commit-id = "2.3.0"
+commit-id = "2.0.1.dev0"
+
+
+[tox]
+test_matrix = { "6.0" = ["*"], "6.1" = ["*"] }
+
+[github]
+py_versions = "[\"3.10\",\"3.11\",\"3.12\"]"
