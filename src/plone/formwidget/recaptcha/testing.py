@@ -1,8 +1,9 @@
-# -*- coding: utf-8 -*-
 from plone.app.testing import applyProfile
+from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
+from plone.testing import zope
 
 import plone.formwidget.recaptcha
 
@@ -27,4 +28,9 @@ PLONE_FORMWIDGET_RECAPTCHA_FIXTURE = PloneFormwidgetRecaptchaLayer()
 PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING = IntegrationTesting(
     bases=(PLONE_FORMWIDGET_RECAPTCHA_FIXTURE,),
     name="PloneFormwidgetRecaptchaLayer:IntegrationTesting",
+)
+
+PLONE_FORMWIDGET_RECAPTCHA_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(PLONE_FORMWIDGET_RECAPTCHA_FIXTURE, zope.WSGI_SERVER_FIXTURE),
+    name="PloneFormwidgetRecaptchaLayer:FunctionalTesting",
 )

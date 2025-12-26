@@ -1,14 +1,17 @@
-include *.txt
+include *.in
 include *.rst
-include *.cfg
-
-recursive-include src *
-recursive-include docs *
-
-global-exclude *.pyc
-global-exclude *.pyo
-global-exclude .DS_Store
-
-include pyproject.toml
-recursive-exclude news *
-exclude news
+include .coveragerc
+include .isort.cfg
+include bobtemplate.cfg
+recursive-include news *.breaking
+recursive-include news *.feature
+recursive-include news *.gitkeep
+recursive-include news *.internal
+recursive-include news *.misc
+recursive-include src *.po
+recursive-include src *.pot
+recursive-include src *.pt
+recursive-include src *.py
+recursive-include src *.sh
+recursive-include src *.xml
+recursive-include src *.zcml

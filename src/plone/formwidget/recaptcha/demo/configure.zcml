@@ -5,15 +5,15 @@
 
   <browser:page
       name="recaptcha_form"
-      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
-      permission="zope.Public"
+      for="plone.base.interfaces.siteroot.IPloneSiteRoot"
       class=".form.ReCaptchaForm"
+      permission="zope.Public"
       />
 
   <adapter
-      provides=".form.IReCaptchaForm"
-      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
       factory=".form.ReCaptcha"
+      provides=".form.IReCaptchaForm"
+      for="plone.base.interfaces.siteroot.IPloneSiteRoot"
       />
 
 </configure>

@@ -52,9 +52,10 @@ You can add a captcha field in an XML model by adding something like this::
     </field>
 
 
-Upgrade to API v2
+Upgrade to API v3
 -----------------
 
+plone.formwidget.recaptcha 3.* allows to use both v3 and v3 reCaptcha.
 plone.formwidget.recaptcha 2.* uses V2 of the reCaptcha API.
 Users upgrading from plone.formwidget.recaptcha 1.* will therefore need to generate new keys
 as global Keys are not supported in the V2 API.

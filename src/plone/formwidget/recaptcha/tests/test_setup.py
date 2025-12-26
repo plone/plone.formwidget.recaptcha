@@ -1,19 +1,14 @@
-# -*- coding: utf-8 -*-
 """Setup tests for this package."""
+
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from plone.base.utils import get_installer
 from plone.formwidget.recaptcha.testing import (
     PLONE_FORMWIDGET_RECAPTCHA_INTEGRATION_TESTING,
 )
 
 import plone.api
 import unittest
-
-
-try:
-    from Products.CMFPlone.utils import get_installer
-except ImportError:
-    get_installer = None
 
 
 class TestSetup(unittest.TestCase):
@@ -24,14 +19,13 @@ class TestSetup(unittest.TestCase):
     def setUp(self):
         """Custom shared utility setup for tests."""
         self.portal = self.layer["portal"]
-        if get_installer:
-            self.installer = get_installer(self.portal, self.layer["request"])
-        else:
-            self.installer = plone.api.portal.get_tool("portal_quickinstaller")
+        self.installer = get_installer(self.portal, self.layer["request"])
 
     def test_product_installed(self):
         """Test if plone.formwidget.recaptcha is installed."""
-        self.assertTrue(self.installer.isProductInstalled("plone.formwidget.recaptcha"))
+        self.assertTrue(
+            self.installer.is_product_installed("plone.formwidget.recaptcha")
+        )
 
     def test_browserlayer(self):
         """Test that IReCaptchaLayer is registered."""
@@ -47,19 +41,16 @@ class TestUninstall(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
-        if get_installer:
-            self.installer = get_installer(self.portal, self.layer["request"])
-        else:
-            self.installer = plone.api.portal.get_tool("portal_quickinstaller")
+        self.installer = get_installer(self.portal, self.layer["request"])
         roles_before = plone.api.user.get_roles(TEST_USER_ID)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.installer.uninstallProducts(["plone.formwidget.recaptcha"])
+        self.installer.uninstall_product("plone.formwidget.recaptcha")
         setRoles(self.portal, TEST_USER_ID, roles_before)
 
     def test_product_uninstalled(self):
         """Test if plone.formwidget.recaptcha is cleanly uninstalled."""
         self.assertFalse(
-            self.installer.isProductInstalled("plone.formwidget.recaptcha")
+            self.installer.is_product_installed("plone.formwidget.recaptcha")
         )
 
     def test_browserlayer_removed(self):

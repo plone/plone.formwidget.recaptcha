@@ -1,10 +1,10 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope">
+<configure xmlns="http://namespaces.zope.org/zope">
 
-  <include package="plone.restapi"  />
+  <include package="plone.restapi" />
   <adapter
-    factory=".controlpanel.ReCaptchaConfigletPanel"
-    name="recaptcha" />
+      factory=".controlpanel.ReCaptchaConfigletPanel"
+      name="recaptcha"
+      />
 
 
 </configure>

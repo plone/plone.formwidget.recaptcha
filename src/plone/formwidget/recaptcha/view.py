@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.formwidget.recaptcha.interfaces import IReCaptchaSettings
 from plone.formwidget.recaptcha.norecaptcha import displayhtml
 from plone.formwidget.recaptcha.norecaptcha import displayhtml_v3
@@ -23,7 +22,7 @@ class IRecaptchaInfo(Interface):
 
 @adapter(IBrowserRequest)
 @implementer(IRecaptchaInfo)
-class RecaptchaInfoAnnotation(object):
+class RecaptchaInfoAnnotation:
     def __init__(self):
         self.error = None
         self.verified = False
@@ -44,7 +43,7 @@ class RecaptchaView(BrowserView):
 
         # Common error message template
         def get_config_error_message(version_suffix=""):
-            return 'No recaptcha{0} public key configured. Go to <a href="{1}/@@recaptcha-settings" target=_blank>Recaptcha Settings</a> to configure.'.format(
+            return 'No recaptcha{} public key configured. Go to <a href="{}/@@recaptcha-settings" target=_blank>Recaptcha Settings</a> to configure.'.format(
                 version_suffix, getSite().absolute_url()
             )
 
