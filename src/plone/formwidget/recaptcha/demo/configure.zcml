@@ -5,7 +5,7 @@
 
   <browser:page
       name="recaptcha_form"
-      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      for="plone.base.interfaces.siteroot.IPloneSiteRoot"
       class=".form.ReCaptchaForm"
       permission="zope.Public"
       />
@@ -13,7 +13,7 @@
   <adapter
       factory=".form.ReCaptcha"
       provides=".form.IReCaptchaForm"
-      for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+      for="plone.base.interfaces.siteroot.IPloneSiteRoot"
       />
 
 </configure>

@@ -39,7 +39,7 @@
       title="ReCaptcha widget"
       description="z3c.form ReCaptcha widget."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      for="plone.base.interfaces.IPloneSiteRoot"
       directory="profiles/default"
       />
   <gs:registerProfile
@@ -55,7 +55,7 @@
       title="Upgrade profile"
       description="Upgrade profile to add new fields."
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      for="Products.CMFPlone.interfaces.IMigratingPloneSiteRoot"
+      for="plone.base.interfaces.IMigratingPloneSiteRoot"
       directory="profiles/to_5"
       />
 
