@@ -61,6 +61,7 @@ setup(
         "plone.supermodel",
         "plone.z3cform",
         "Products.CMFCore",
+        "plone.api",
         "setuptools",
         "z3c.form",
         "zope.annotation",
