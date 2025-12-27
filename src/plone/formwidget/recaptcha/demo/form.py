@@ -37,13 +37,9 @@ class BaseForm(form.Form):
     @button.buttonAndHandler("Save")
     def handleApply(self, action):
         data, errors = self.extractData()
-        captcha = getMultiAdapter(
-            (aq_inner(self.context), self.request), name="recaptcha"
-        )
-        if captcha.verify():
-            logger.info("ReCaptcha validation passed.")
-        else:
-            logger.info("The code you entered was wrong, please enter the new one.")
+
+        if errors:
+            self.status = "There was an error"
         return
 
 
