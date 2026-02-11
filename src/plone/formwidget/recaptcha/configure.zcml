@@ -142,4 +142,13 @@
       mode="input"
       />
 
+  <adapter
+      factory=".validator.ReCaptchaValidator"
+      for="*
+           .interfaces.IReCaptchaLayer
+           *
+           *
+           .interfaces.IReCaptchaWidget"
+      />
+
 </configure>

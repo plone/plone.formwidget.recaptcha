@@ -40,7 +40,12 @@ To actually use the service, you must obtain a site key and secret key from
 
 Usage
 -----
+
+The ReCaptcha validator will be enabled by default in all of your forms that use the ReCaptcha Field and Widget.
+
 See the `demo <https://github.com/plone/plone.formwidget.recaptcha/tree/master/src/plone/formwidget/recaptcha/demo>`_ folder inside the distribution for an example usage.
+
+
 
 Supermodel
 ^^^^^^^^^^
