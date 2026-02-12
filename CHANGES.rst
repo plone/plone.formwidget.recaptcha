@@ -7,6 +7,40 @@ Changelog
 
 .. towncrier release notes start
 
+3.0.0 (2026-02-12)
+------------------
+
+Breaking changes:
+
+
+- Support Plone 6-only @erral
+  Apply plone/meta @erral (#40)
+
+
+New features:
+
+
+- Add an adapter to show the control panel in Volto and register translations
+  [erral] (#32)
+- Add new languages Catalan and French
+  [aormazabal] (#35)
+- Adds support for reCAPTCHA v3 @rohnsha0 (#38)
+- Provide a default validator for the recaptcha field @erral
+
+
+Internal:
+
+
+- Update configuration files.
+  [plone devs]
+
+
+Tests:
+
+
+- Move CI from TravisCI to Github Actions [jensens] (#29)
+
+
 2.3.0 (2021-03-01)
 ------------------
 
