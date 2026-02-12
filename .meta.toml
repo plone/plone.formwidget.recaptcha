@@ -7,7 +7,4 @@ commit-id = "2.3.1"
 
 
 [tox]
-test_matrix = { "6.1" = ["*"], "6.0" = ["*"] }
-
-[github]
-py_versions = "[\"3.10\",\"3.11\",\"3.12\"]"
+test_matrix = { "6.2" = ["*"] }

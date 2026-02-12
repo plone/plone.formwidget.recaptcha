@@ -15,7 +15,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.formwidget.recaptcha",
-    version="3.0.1.dev0",
+    version="4.0.0.dev0",
     description="ReCaptcha widget for Plone.",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -47,7 +47,6 @@ setup(
     },
     license="GPLv2",
     packages=find_packages("src", exclude=["ez_setup"]),
-    namespace_packages=["plone", "plone.formwidget"],
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
