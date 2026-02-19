@@ -15,7 +15,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.formwidget.recaptcha",
-    version="3.0.1.dev0",
+    version="4.0.0.dev0",
     description="ReCaptcha widget for Plone.",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
@@ -24,11 +24,9 @@ setup(
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: Addon",
-        "Framework :: Plone :: 6.0",
-        "Framework :: Plone :: 6.1",
+        "Framework :: Plone :: 6.2",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
@@ -47,11 +45,10 @@ setup(
     },
     license="GPLv2",
     packages=find_packages("src", exclude=["ez_setup"]),
-    namespace_packages=["plone", "plone.formwidget"],
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
-    python_requires=">=3.9,<3.14",
+    python_requires=">=3.10,<3.14",
     install_requires=[
         "Acquisition",
         "plone.app.registry",
