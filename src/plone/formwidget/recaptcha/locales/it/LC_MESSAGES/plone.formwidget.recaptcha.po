@@ -1,0 +1,116 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plone.formwidget.recaptcha\n"
+"POT-Creation-Date: 2025-12-19 22:42+0000\n"
+"PO-Revision-Date: 2026-06-09 00:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone.formwidget.recaptcha\n"
+
+#: ../interfaces.py:83
+msgid "API Version"
+msgstr "Versione API"
+
+#: ../controlpanel.py:10
+msgid "In order to use ReCaptcha v2 on your Plone site, go to https://developers.google.com/recaptcha/ to create an account and to receive your private and public key. Then configure them at https://host/path/to/site/@@recaptcha-settings. If you don't want to rely on an external service for captcha, you might want to consider using plone.formwidget.captcha instead."
+msgstr "Per usare ReCaptcha v2 sul tuo sito Plone, vai su https://developers.google.com/recaptcha/ per creare un account e ricevere la tua chiave privata e la tua chiave pubblica. Poi configurale su https://host/path/to/site/@@recaptcha-settings. Se non vuoi dipendere da un servizio esterno per il captcha, puoi valutare l'uso di plone.formwidget.captcha."
+
+#: ../interfaces.py:97
+msgid "Minimum score for v3 validation (0.0 - 1.0). Recommended: 0.5"
+msgstr "Punteggio minimo per la validazione v3 (0,0 - 1,0). Consigliato: 0,5"
+
+#: ../interfaces.py:55
+msgid "Private Key"
+msgstr "Chiave privata"
+
+#: ../interfaces.py:51
+msgid "Public Key"
+msgstr "Chiave pubblica"
+
+#: ../profiles/default/controlpanel.xml
+msgid "ReCaptcha"
+msgstr "ReCaptcha"
+
+#: ../restapi/controlpanel.py:16
+msgid "ReCaptcha Control Panel"
+msgstr "Pannello di controllo ReCaptcha"
+
+#: ../controlpanel.py:9
+msgid "ReCaptcha v2 settings"
+msgstr "Impostazioni ReCaptcha v2"
+
+#: ../interfaces.py:96
+msgid "Score Threshold (v3)"
+msgstr "Soglia del punteggio (v3)"
+
+#: ../interfaces.py:84
+msgid "Select the reCAPTCHA API version to use (v2 or v3)."
+msgstr "Seleziona la versione dell'API reCAPTCHA da usare (v2 o v3)."
+
+#: ../interfaces.py:75
+msgid "Size"
+msgstr "Dimensione"
+
+#: ../validator.py:9
+msgid "The code you entered was wrong, please enter the new one."
+msgstr "Il codice inserito non è corretto, inseriscine uno nuovo."
+
+#: ../interfaces.py:60
+msgid "The color theme of the widget."
+msgstr "Il tema colore del widget."
+
+#: ../interfaces.py:76
+msgid "The size of the widget."
+msgstr "La dimensione del widget."
+
+#: ../interfaces.py:68
+msgid "The type of CAPTCHA to serve."
+msgstr "Il tipo di CAPTCHA da mostrare."
+
+#: ../interfaces.py:59
+msgid "Theme"
+msgstr "Tema"
+
+#: ../interfaces.py:67
+msgid "Type"
+msgstr "Tipo"
+
+#: ../interfaces.py:18
+msgid "audio"
+msgstr "audio"
+
+#: ../interfaces.py:24
+msgid "compact"
+msgstr "compatto"
+
+#: ../interfaces.py:12
+msgid "dark"
+msgstr "scuro"
+
+#: ../interfaces.py:17
+msgid "image"
+msgstr "immagine"
+
+#: ../interfaces.py:11
+msgid "light"
+msgstr "chiaro"
+
+#: ../interfaces.py:23
+msgid "normal"
+msgstr "normale"
+
+#: ../interfaces.py:89
+msgid "v2"
+msgstr "v2"
+
+#: ../interfaces.py:90
+msgid "v3"
+msgstr "v3"
