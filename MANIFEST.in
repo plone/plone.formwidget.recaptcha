@@ -1,5 +1,4 @@
 include *.rst
-include .isort.cfg
 include bobtemplate.cfg
 graft src
 prune news

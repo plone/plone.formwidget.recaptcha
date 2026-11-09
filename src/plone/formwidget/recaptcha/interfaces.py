@@ -5,7 +5,6 @@ from zope.interface import Interface
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
-
 display_themes = SimpleVocabulary(
     [
         SimpleTerm(value="light", title=_("light")),
