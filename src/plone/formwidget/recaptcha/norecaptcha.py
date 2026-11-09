@@ -8,7 +8,6 @@ from urllib.request import urlopen
 import json
 import logging
 
-
 VERIFY_SERVER = "www.google.com"
 
 
@@ -85,9 +84,7 @@ grecaptcha.ready(function() {{
 }});
 </script>
 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
-""".format(
-        SiteKey=site_key, Action=action
-    )
+""".format(SiteKey=site_key, Action=action)
 
 
 def submit_v3(

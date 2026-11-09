@@ -8,7 +8,6 @@ from zope import schema
 
 import logging
 
-
 logger = logging.getLogger(__name__)
 
 

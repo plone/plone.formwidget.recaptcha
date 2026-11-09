@@ -1,8 +1,6 @@
 """Installer for the plone.formwidget.recaptcha package."""
 
-from setuptools import find_packages
 from setuptools import setup
-
 
 long_description = "\n\n".join(
     [
@@ -25,12 +23,13 @@ setup(
         "Framework :: Plone",
         "Framework :: Plone :: Addon",
         "Framework :: Plone :: 6.2",
-        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Framework :: Plone :: 6.3",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Programming Language :: Python :: 3.15",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords="plone discussion plone.app.discussion spam captcha recaptcha",
@@ -43,12 +42,10 @@ setup(
         "Tracker": "https://github.com/plone/plone.formwidget.recaptcha/issues",
         # 'Documentation': 'https://plone.formwidget.recaptcha.readthedocs.io/en/latest/',
     },
-    license="GPLv2",
-    packages=find_packages("src", exclude=["ez_setup"]),
-    package_dir={"": "src"},
+    license_expression="GPL-2.0-only",
     include_package_data=True,
     zip_safe=False,
-    python_requires=">=3.10,<3.14",
+    python_requires=">=3.11",
     install_requires=[
         "Acquisition",
         "plone.app.registry",
@@ -58,7 +55,6 @@ setup(
         "plone.supermodel",
         "plone.z3cform",
         "Products.CMFCore",
-        "setuptools",
         "z3c.form",
         "zope.annotation",
         "zope.component",
