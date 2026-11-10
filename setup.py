@@ -13,7 +13,7 @@ long_description = "\n\n".join(
 
 setup(
     name="plone.formwidget.recaptcha",
-    version="4.0.0.dev0",
+    version="4.0.0",
     description="ReCaptcha widget for Plone.",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
